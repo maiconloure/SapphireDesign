@@ -1,10 +1,5 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+import Button from './components/button'
+import Input from './components/input'
+import Title from './components/title'
 
-interface Props {
-  text: string
-}
-
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { Button, Input, Title }
