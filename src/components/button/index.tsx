@@ -21,7 +21,7 @@ const Btn = styled.button`
   margin: 20px 0;
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #3b8ef6;
   border-radius: 8px;
   background-color: #fff;
