@@ -1,3 +1,9 @@
-import Button from './christopher/button'
+import Button from './components/button'
+import DarkButton from './components/darkButton'
+import Input from './components/input'
+import Title from './components/title'
+import ActionButton from './components/actionButton'
 
-export { Button }
+import Modal from './components/christopher/modal'
+
+export { Button, DarkButton, ActionButton, Input, Title, Modal }
