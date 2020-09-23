@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Button, Input, Title } from 'capstone'
+import { Button, DarkButton, ActionButton, Input, Title } from 'capstone'
 import 'capstone/dist/index.css'
 
 const App = () => {
@@ -12,8 +12,10 @@ const App = () => {
     <AppContainer>
       <Title fontSize='4rem'>Capstone Project</Title>
       <Title fontSize='2rem'>Library Components</Title>
-      <Button onClick={handleOnClick}>Get Started</Button>
       <Input type='text' placeholder='Capstone Project' />
+      <Button onClick={handleOnClick}>Get Started</Button>
+      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
+      <ActionButton label='Add Component' />
     </AppContainer>
   )
 }
@@ -27,5 +29,5 @@ const AppContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #3b8ef6;
+  background-color: #018ef5;
 `
