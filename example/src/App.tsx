@@ -1,15 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
+import joker from './images/joker.jpg'
 
-import { Button, DarkButton, ActionButton, Input, Title } from 'capstone'
+import {
+  Button,
+  DarkButton,
+  ActionButton,
+  Input,
+  Title,
+  // ModalLeandro,
+  CardLeandro,
+  Strong
+} from 'capstone'
 import 'capstone/dist/index.css'
 
 const App = () => {
   const handleOnClick = () => {
     console.log('FUNCIONOU')
   }
+
+  const imageClick = () => {
+    console.log('deu bom.')
+  }
+
   return (
     <AppContainer>
+      <Container>
+        <CardLeandro
+          title='The Joker'
+          titleSize='48px'
+          boxWidth='36vw'
+          imageImport={joker}
+          fontColor='#869198'
+          onClick={imageClick}
+        >
+          Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
+          elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
+          dolore magna aliqua.
+        </CardLeandro>
+      </Container>
       <Title fontSize='4rem'>Capstone Project</Title>
       <Title fontSize='2rem'>Library Components</Title>
       <Input type='text' placeholder='Capstone Project' />
@@ -30,4 +59,11 @@ const AppContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: #018ef5;
+`
+
+const Container = styled.div`
+  position: absolute;
+  z-index: 2;
+  top: 10vh;
+  left: 20vw;
 `
