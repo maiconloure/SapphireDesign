@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import joker from './images/joker.jpg'
 
@@ -8,19 +8,16 @@ import {
   ActionButton,
   Input,
   Title,
-  // ModalLeandro,
-  CardLeandro,
-  Strong
+  Modal,
+  CloseButton
 } from 'capstone'
-import 'capstone/dist/index.css'
 
 const App = () => {
+  const [showModal, setShowModal] = useState(true)
+
   const handleOnClick = () => {
     console.log('FUNCIONOU')
-  }
-
-  const imageClick = () => {
-    console.log('deu bom.')
+    setShowModal(true)
   }
 
   return (
@@ -31,21 +28,26 @@ const App = () => {
       <Button onClick={handleOnClick}>Get Started</Button>
       <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
       <ActionButton label='Add Component' />
-
-      <Container>
-        <CardLeandro
-          title='The Joker'
-          titleSize='48px'
-          boxWidth='36vw'
-          imageImport={joker}
-          fontColor='#869198'
-          onClick={imageClick}
-        >
-          Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
-          elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
-          dolore magna aliqua.
-        </CardLeandro>
-      </Container>
+      <Modal
+        title='Login'
+        toggleModal={{ showModal, setShowModal }}
+        styles={{size: 'bigger', fontSize: 'bigger'}}
+      >
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+          <Input type='text' placeholder='Your Email' />
+          <Input type='password' placeholder='Your Password' />
+          <Button onClick={handleOnClick}>Login</Button>
+        </div>
+      </Modal>
+      <Test>
+        <CloseButton
+          styles={{
+            position: '',
+            size: 'bigger'
+          }}
+          toggleModal={{ showModal, setShowModal }}
+        />
+      </Test>
     </AppContainer>
   )
 }
@@ -62,10 +64,9 @@ const AppContainer = styled.div`
   background-color: #018ef5;
 `
 
-const Container = styled.div`
-  /* position: absolute; */
-  /* z-index: 2; */
-  top: 10vh;
-  left: 20vw;
-  margin: 20px;
+const Test = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
 `

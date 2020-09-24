@@ -7,13 +7,7 @@ import CardLeandro from './components/leandro/card'
 import Strong from './components/leandro/strong'
 import ModalLeandro from './components/leandro/modal'
 
-export {
-  Button,
-  DarkButton,
-  ActionButton,
-  Input,
-  Title,
-  CardLeandro,
-  Strong,
-  ModalLeandro
-}
+import Modal from './components/christopher/modal'
+import CloseButton from './components/christopher/closeButton'
+
+export { Button, DarkButton, ActionButton, Input, Title, Modal, CloseButton }
