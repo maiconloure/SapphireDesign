@@ -1,4 +1,6 @@
-# capstone
+# Shaphire Design, library components
+
+![Logo Image](./example/src/assets/logo.png?raw=true 'Logo')
 
 > Made with create-react-library
 
@@ -8,23 +10,16 @@
 
 ```bash
 npm install --save capstone
+yarn add capstone
 ```
 
-## Usage
+## Components
 
-```tsx
-import React, { Component } from 'react'
+```
+Button, DarkButton, actionButton, input, passwordInput
 
-import MyComponent from 'capstone'
-import 'capstone/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
 ```
 
 ## License
 
-MIT © [maiconloure](https://github.com/maiconloure)
+MIT © [maiconloure, barlera1989, christopher, leandroKoller](https://github.com/maiconloure)

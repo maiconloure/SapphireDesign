@@ -13,24 +13,24 @@ const DarkButton = ({ children, onClick }: DarkButtonProps) => {
 export default DarkButton
 
 const DarkBtn = styled.button`
-  width: 260px;
-  height: 85px;
+  width: 170px;
+  height: 55px;
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 20px 0;
+  margin: 10px 10px;
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   color: #0089ff;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #232323;
   transition: 0.2s;
-  box-shadow: 1px 1px 6px black;
+  box-shadow: 1px 1px 8px #2d2d2d;
 
   &:hover {
-    box-shadow: 1px 1px 14px black;
-    color: #00437d;
+    box-shadow: 1px 1px 10px #2d2d2d;
+    color: #000080;
   }
 
   &:active {

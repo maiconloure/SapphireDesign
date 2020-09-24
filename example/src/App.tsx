@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import logo from './assets/thumb.jpg'
 import joker from './images/joker.jpg'
-
 import {
+  Logo,
   Button,
   DarkButton,
   ActionButton,
   Input,
+  PasswordInput,
   Title,
   // ModalLeandro,
   CardLeandro,
@@ -30,12 +32,18 @@ const App = () => {
 
   return (
     <AppContainer>
-      <Title fontSize='4rem'>Capstone Project</Title>
-      <Title fontSize='2rem'>Library Components</Title>
-      <Input type='text' placeholder='Capstone Project' />
-      <Button onClick={handleOnClick}>Get Started</Button>
-      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
-      <ActionButton label='Add Component' />
+      <SubContainer>
+        <Logo image={logo} />
+        <Title fontSize='3.8rem'>Sapphire Design</Title>
+        <Title fontSize='1.6rem' color='#000'>
+          Library Components
+        </Title>
+        <Input type='text' placeholder='Let the games begin' />
+        <PasswordInput placeholder='Enter the password' />
+        <Button onClick={handleOnClick}>Login</Button>
+        <DarkButton onClick={handleOnClick}>Register</DarkButton>
+        <ActionButton label='Add Component' />
+      </SubContainer>
 
       <Container>
         <CardLeandro
@@ -94,7 +102,9 @@ const AppContainer = styled.div`
   flex-direction: column;
   background-color: #018ef5;
 `
-
+const SubContainer = styled.div`
+  margin-top: 180px;
+`
 const Container = styled.div`
   /* position: absolute; */
   /* z-index: 2; */
