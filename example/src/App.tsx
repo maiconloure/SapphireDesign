@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import joker from './images/joker.jpg'
 
 import {
   Button,
@@ -55,7 +56,7 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
