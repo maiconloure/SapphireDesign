@@ -24,11 +24,12 @@ const ActionContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-right: 110px;
 `
 
 const ActionBtn = styled.button`
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -50,16 +51,20 @@ const ActionBtn = styled.button`
 const IconBtn = styled(HiLightningBolt)`
   color: #ffc200;
   color: radial-gradient(#ffc200 0%, #ffc400 100%);
+  width: 45px;
+  height: 45px;
 
-  width: 60px;
-  height: 60px;
+  &:hover {
+    color: #c9a33a;
+  }
 `
 
 const LabelBtn = styled.p`
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
   width: 10%;
-  margin-left: 12px;
+  margin-left: 16px;
+  margin-bottom: 10px;
 `

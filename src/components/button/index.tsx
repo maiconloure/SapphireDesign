@@ -13,22 +13,22 @@ const Button = ({ children, onClick }: ButtonProps) => {
 export default Button
 
 const Btn = styled.button`
-  width: 260px;
-  height: 85px;
+  width: 170px;
+  height: 55px;
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 20px 0;
+  margin: 10px 10px;
   font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 600;
-  font-size: 1.6rem;
+  font-weight: 700;
+  font-size: 1.4rem;
   color: #3b8ef6;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #fff;
   transition: 0.2s;
 
   &:hover {
-    box-shadow: 1px 1px 0px 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 1px 1px 0px 8px rgba(255, 255, 255, 0.1);
     color: #000080;
   }
 

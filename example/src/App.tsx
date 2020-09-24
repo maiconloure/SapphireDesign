@@ -1,20 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Button, DarkButton, ActionButton, Input, Title } from 'capstone'
-import 'capstone/dist/index.css'
+import {
+  Logo,
+  Button,
+  DarkButton,
+  ActionButton,
+  Input,
+  Title,
+  PasswordInput
+} from 'capstone'
 
+import logo from './assets/thumb.jpg'
 const App = () => {
   const handleOnClick = () => {
     console.log('FUNCIONOU')
   }
   return (
     <AppContainer>
-      <Title fontSize='4rem'>Capstone Project</Title>
-      <Title fontSize='2rem'>Library Components</Title>
-      <Input type='text' placeholder='Capstone Project' />
-      <Button onClick={handleOnClick}>Get Started</Button>
-      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
+      <Logo image={logo} />
+      <Title fontSize='3.8rem'>Sapphire Design</Title>
+      <Title fontSize='1.6rem' color='#000'>
+        Library Components
+      </Title>
+      <Input type='text' placeholder='Let the games begin' />
+      <PasswordInput placeholder='Enter the password' />
+      <Button onClick={handleOnClick}>Login</Button>
+      <DarkButton onClick={handleOnClick}>Register</DarkButton>
       <ActionButton label='Add Component' />
     </AppContainer>
   )
