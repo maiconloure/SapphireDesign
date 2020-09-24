@@ -29,7 +29,7 @@ const Btn = styled.button`
 
   &:hover {
     box-shadow: 1px 1px 0px 8px rgba(255, 255, 255, 0.1);
-    color: #000080;
+    color: #00437d;
   }
 
   &:active {
