@@ -27,7 +27,13 @@ export default function Card({
   onClick
 }: Props) {
   return (
-    <Box style={{ width: boxWidth, top: topSpacing, left: leftSpacing }}>
+    <Box
+      style={{
+        width: boxWidth,
+        marginTop: topSpacing,
+        marginLeft: leftSpacing
+      }}
+    >
       <Title style={{ fontSize: titleSize }}>{title}</Title>
       <Content>
         <Image src={imageImport} alt={imageAlt} onClick={onClick} />
@@ -38,8 +44,6 @@ export default function Card({
 }
 
 const Box = styled.div`
-  /* background-color: rgba(250, 250, 250, 0.3); */
-
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   background: rgba(30, 30, 30, 0.75);
@@ -47,8 +51,7 @@ const Box = styled.div`
   display: flex;
   flex-flow: column;
 
-  z-index: 2;
-  position: absolute;
+  z-index: 3;
   min-height: 20vh;
   padding: 2vh 3vw 2vh 3vw;
   border-radius: 8px;

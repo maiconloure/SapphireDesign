@@ -8,7 +8,8 @@ import {
   ActionButton,
   Input,
   Title,
-  Card,
+  ModalLeandro,
+  // CardLeandro,
   Strong
 } from 'capstone'
 import 'capstone/dist/index.css'
@@ -24,12 +25,10 @@ const App = () => {
 
   return (
     <AppContainer>
-      <Card
+      <ModalLeandro
         title='The Joker'
         titleSize='48px'
         boxWidth='36vw'
-        topSpacing='10vh'
-        leftSpacing='30vw'
         imageImport={joker}
         fontColor='#869198'
         onClick={imageClick}
@@ -37,7 +36,7 @@ const App = () => {
         Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
         elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
         dolore magna aliqua.
-      </Card>
+      </ModalLeandro>
       <Title fontSize='4rem'>Capstone Project</Title>
       <Title fontSize='2rem'>Library Components</Title>
       <Input type='text' placeholder='Capstone Project' />
