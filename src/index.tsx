@@ -6,8 +6,18 @@ import ActionButton from './components/actionButton'
 import CardLeandro from './components/leandro/card'
 import Strong from './components/leandro/strong'
 import ModalLeandro from './components/leandro/modal'
-
 import Modal from './components/christopher/modal'
 import CloseButton from './components/christopher/closeButton'
 
-export { Button, DarkButton, ActionButton, Input, Title, Modal, CloseButton }
+export {
+  Button,
+  DarkButton,
+  ActionButton,
+  Input,
+  Title,
+  CardLeandro,
+  Strong,
+  ModalLeandro,
+  Modal,
+  CloseButton
+}
