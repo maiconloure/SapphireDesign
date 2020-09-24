@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import CloseButton from '../closeButton'
 
 interface Props {
   title: string
@@ -45,9 +46,10 @@ const Modal = ({
   return (
     <Shadow showModal={showModal}>
       <StyledModal styles={StyleDefaultState} showModal={showModal}>
-        <XButton onClick={() => setShowModal(false)} styles={StyleDefaultState}>
-          X
-        </XButton>
+        <CloseButton
+          toggleModal={{ showModal, setShowModal }}
+          styles={{ position: 'right' }}
+        />
         <Title styles={StyleDefaultState}>{title}</Title>
         <Container styles={StyleDefaultState}>{children}</Container>
       </StyledModal>
@@ -56,6 +58,17 @@ const Modal = ({
 }
 
 export default Modal
+
+const Shadow = styled.div<{ showModal: boolean }>`
+  ${(props) =>
+    props.showModal &&
+    `
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: #0009;
+ `}
+`
 
 const StyledModal = styled.button<{ styles?: any; showModal: boolean }>`
   /* <{ style?: any }> */
@@ -81,26 +94,6 @@ const StyledModal = styled.button<{ styles?: any; showModal: boolean }>`
     props.showModal
       ? 'opacity: 1; pointer-events: auto;'
       : `opacity: 0; left: -${props.styles.width}px`}
-`
-const XButton = styled.button<{ styles?: any }>`
-  background-color: ${(props) => props.styles.bgColorComplementary};
-  color: ${(props) => props.styles.colorComplementary};
-  border: 1px solid #999;
-  border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
-
-  position: absolute;
-  width: 25px;
-  right: -12px;
-  top: -18px;
-  line-height: 22px;
-  margin-top: 5px;
-  outline: none;
-
-  :active {
-    opacity: 0.6;
-  }
 `
 
 const Title = styled.h1<{ styles?: any }>`
@@ -135,14 +128,4 @@ const Container = styled(ScrollBar)<{ styles?: any }>`
   display: content-box;
   max-height: ${(props) => props.styles.maxHeight}vh;
   padding: 50px;
-`
-const Shadow = styled.div<{ showModal: boolean }>`
-  ${(props) =>
-    props.showModal &&
-    `
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background: #0009;
- `}
 `

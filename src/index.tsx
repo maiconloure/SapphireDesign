@@ -5,5 +5,6 @@ import Title from './components/title'
 import ActionButton from './components/actionButton'
 
 import Modal from './components/christopher/modal'
+import CloseButton from './components/christopher/closeButton'
 
-export { Button, DarkButton, ActionButton, Input, Title, Modal }
+export { Button, DarkButton, ActionButton, Input, Title, Modal, CloseButton }

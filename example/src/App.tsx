@@ -1,7 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Button, DarkButton, ActionButton, Input, Title, Modal } from 'capstone'
+import {
+  Button,
+  DarkButton,
+  ActionButton,
+  Input,
+  Title,
+  Modal,
+  CloseButton
+} from 'capstone'
+
+const styles = {
+  position: 'left-bottom',
+  size: ''
+}
 
 const App = () => {
   const [showModal, setShowModal] = useState(true)
@@ -20,143 +33,15 @@ const App = () => {
         title='Modsdfsadfasdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfal'
         toggleModal={{ showModal, setShowModal }}
       >
-        <div>
-          <div>
-            ihsasdfffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffhi
-          </div>
-          <div>
-            ihifadssssssssssssssssssssssssssssssdfasasdffffffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>
-            ihfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaisdaffffffffffffffffhi
-          </div>
-          <div>ihifdsaaaaaaaaaaaaaaaaaaaaahi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div> <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-          <div>ihihi</div>
-        </div>
+        <div></div>
       </Modal>
       <button onClick={() => setShowModal(true)}>ShowModal</button>
+      <Test>
+        <CloseButton
+          styles={styles}
+          toggleModal={{ showModal, setShowModal }}
+        />
+      </Test>
     </AppContainer>
   )
 }
@@ -171,4 +56,11 @@ const AppContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: #018ef5;
+`
+
+const Test = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
 `
