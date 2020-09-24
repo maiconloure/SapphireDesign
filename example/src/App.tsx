@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker.jpg'
+import { motion } from 'framer-motion'
 import {
   Logo,
   Button,
@@ -45,11 +46,15 @@ const App = () => {
         <ActionButton label='Add Component' />
       </SubContainer>
 
-      <Container>
+      <Container
+        drag
+        dragMomentum={false}
+        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+      >
         <CardLeandro
           title='The Joker'
           titleSize='48px'
-          boxWidth='36vw'
+          boxWidth='32vw'
           imageImport={joker}
           fontColor='#869198'
           onClick={imageClick}
@@ -95,7 +100,7 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,11 +110,11 @@ const AppContainer = styled.div`
 const SubContainer = styled.div`
   margin-top: 180px;
 `
-const Container = styled.div`
-  /* position: absolute; */
-  /* z-index: 2; */
-  top: 10vh;
-  left: 20vw;
+const Container = styled(motion.div)`
+  position: absolute;
+  z-index: 2;
+  top: 0vh;
+  left: 0vw;
   margin: 20px;
 `
 
