@@ -6,8 +6,8 @@ interface Props {
   title?: string
   titleSize?: string
   boxWidth: string
-  topSpacing: string
-  leftSpacing: string
+  topSpacing?: string
+  leftSpacing?: string
   fontColor?: string
   imageImport?: string
   imageAlt?: string
@@ -19,8 +19,8 @@ export default function Card({
   title,
   titleSize = '1.8rem',
   boxWidth,
-  topSpacing,
-  leftSpacing,
+  topSpacing = '0',
+  leftSpacing = '0',
   fontColor = '#00ff98',
   imageImport,
   imageAlt,
@@ -53,6 +53,7 @@ const Box = styled.div`
 
   z-index: 3;
   min-height: 20vh;
+  height: fit-content;
   padding: 2vh 3vw 2vh 3vw;
   border-radius: 8px;
   border: 2px solid #111;
