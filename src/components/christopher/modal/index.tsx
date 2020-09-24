@@ -9,16 +9,25 @@ interface Props {
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   >
+
   button?: React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   >
+
   styles?: {
-    height?: number | string
-    width?: number | string
-    color?: string
-    bgcolor?: string
+    colorPrimary?: string
+    colorSecondary?: string
+    colorComplementary?: string
+    bgColorPrimary?: string
+    bgColorSecondary?: string
+    bgColorComplementary?: string
+    maxWidth?: number
+    maxHeight?: number
+    fontSize: string
+    size?: string
   }
+
   toggleModal: {
     showModal: boolean
     setShowModal: (props: boolean) => void
@@ -26,32 +35,31 @@ interface Props {
 }
 
 const StyleDefaultState = {
-  height: 250,
-  maxHeight: 70,
-  width: 250,
-  maxWidth: 70,
   colorPrimary: '#ffc200',
   colorSecondary: '#ffc200',
   colorComplementary: '#ffc200',
   bgColorPrimary: '#00437d',
   bgColorSecondary: '#00437d',
-  bgColorComplementary: '#00437d'
+  bgColorComplementary: '#00437d',
+  maxWidth: 70,
+  maxHeight: 50,
+  fontSize: '',
+  size: ''
 }
 
-const Modal = ({
-  title,
-  children,
-  toggleModal: { showModal, setShowModal }
-}: Props) => {
+const Modal = ({ styles, title, children, toggleModal }: Props) => {
+  const { showModal, setShowModal } = toggleModal
+  const newStyles = { ...StyleDefaultState, ...styles }
+
   return (
     <Shadow showModal={showModal}>
-      <StyledModal styles={StyleDefaultState} showModal={showModal}>
+      <StyledModal styles={newStyles} showModal={showModal}>
         <CloseButton
           toggleModal={{ showModal, setShowModal }}
-          styles={{ position: 'right' }}
+          styles={{ position: 'right', size: newStyles.fontSize }}
         />
-        <Title styles={StyleDefaultState}>{title}</Title>
-        <Container styles={StyleDefaultState}>{children}</Container>
+        <Title styles={newStyles}>{title}</Title>
+        <Container styles={newStyles}>{children}</Container>
       </StyledModal>
     </Shadow>
   )
@@ -67,11 +75,11 @@ const Shadow = styled.div<{ showModal: boolean }>`
     height: 100vh;
     width: 100vw;
     background: #0009;
- `}
+    transition: 0.2s;
+    `}
 `
 
-const StyledModal = styled.button<{ styles?: any; showModal: boolean }>`
-  /* <{ style?: any }> */
+const StyledModal = styled.div<{ styles?: any; showModal: boolean }>`
   background-color: ${(props) => props.styles.bgColorPrimary};
   color: ${(props) => props.styles.colorPrimary};
 
@@ -81,34 +89,102 @@ const StyledModal = styled.button<{ styles?: any; showModal: boolean }>`
   transform: translate(-50%, -50%);
 
   display: content-box;
-  min-width: ${(props) => props.styles.width}px;
-  min-height: ${(props) => props.styles.height}px;
 
   border-radius: 10px;
   outline: none;
   border: none;
   padding: 3px;
   z-index: 9999;
+  transition: 0.2s;
+
+  ${(props) =>
+    props.styles.size === 'big'
+      ? `
+      min-width: 450px;
+      max-width: 600px;
+      min-height: 500px;
+      `
+      : props.styles.size === 'bigger'
+      ? `
+      min-width: 750px;
+      max-width: 1200px;
+      min-height: 800px;
+      `
+      : props.styles.size === 'normal'
+      ? `
+      min-width: 300px;
+      max-width: 350px;
+      min-height: 400px;
+      `
+      : props.styles.size === 'mini'
+      ? `
+      min-width: 250px;
+      max-width: 320px;
+      min-height: 300px;
+      `
+      : `
+      `}
 
   ${(props) =>
     props.showModal
       ? 'opacity: 1; pointer-events: auto;'
-      : `opacity: 0; left: -${props.styles.width}px`}
+      : `opacity: 0; left: -750px`}
 `
 
 const Title = styled.h1<{ styles?: any }>`
   position: absolute;
   text-overflow: ellipsis;
-  width: ${(props) => props.styles.width - 20}px;
   left: 5px;
   top: 0px;
   margin: 5px;
   overflow: hidden;
+  ${(props) =>
+    props.styles.fontSize === 'big'
+      ? `
+      font-size: 45px;
+      `
+      : props.styles.fontSize === 'bigger'
+      ? `
+      font-size: 55px;
+      `
+      : props.styles.fontSize === 'normal'
+      ? `
+      font-size: 30px;
+      `
+      : props.styles.fontSize === 'mini'
+      ? `
+      font-size: 20px;
+      `
+      : `
+      `}
+
+  ${(props) =>
+    props.styles.size === 'big'
+      ? `
+      width: 400px;
+      `
+      : props.styles.size === 'bigger'
+      ? `
+      width: 700px;
+      `
+      : props.styles.size === 'normal'
+      ? `
+      width: 270px;
+      `
+      : props.styles.size === 'mini'
+      ? `
+      width: 220px;
+      `
+      : `
+      `}
 `
 
 const ScrollBar = styled.div`
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 11px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -124,7 +200,8 @@ const ScrollBar = styled.div`
 
 const Container = styled(ScrollBar)<{ styles?: any }>`
   overflow: auto;
-  margin-top: 35px;
+  margin-top: ${(props) =>
+    ['bigger', 'big'].includes(props.styles.fontSize) ? `75px` : `40px`};
   display: content-box;
   max-height: ${(props) => props.styles.maxHeight}vh;
   padding: 50px;

@@ -32,11 +32,9 @@ const StyleDefaultState = {
   size: ''
 }
 
-const CloseButton = ({
-  children,
-  styles,
-  toggleModal: { setShowModal }
-}: Props) => {
+const CloseButton = ({ children, styles, toggleModal }: Props) => {
+  const { setShowModal } = toggleModal
+
   return (
     <XButton
       onClick={() => setShowModal(false)}

@@ -11,16 +11,14 @@ import {
   CloseButton
 } from 'capstone'
 
-const styles = {
-  position: 'left-bottom',
-  size: ''
-}
-
 const App = () => {
   const [showModal, setShowModal] = useState(true)
+
   const handleOnClick = () => {
     console.log('FUNCIONOU')
+    setShowModal(true)
   }
+
   return (
     <AppContainer>
       <Title fontSize='4rem'>Capstone Project</Title>
@@ -30,15 +28,22 @@ const App = () => {
       <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
       <ActionButton label='Add Component' />
       <Modal
-        title='Modsdfsadfasdasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfal'
+        title='Login'
         toggleModal={{ showModal, setShowModal }}
+        styles={{size: 'bigger', fontSize: 'bigger'}}
       >
-        <div></div>
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+          <Input type='text' placeholder='Your Email' />
+          <Input type='password' placeholder='Your Password' />
+          <Button onClick={handleOnClick}>Login</Button>
+        </div>
       </Modal>
-      <button onClick={() => setShowModal(true)}>ShowModal</button>
       <Test>
         <CloseButton
-          styles={styles}
+          styles={{
+            position: '',
+            size: 'bigger'
+          }}
           toggleModal={{ showModal, setShowModal }}
         />
       </Test>
