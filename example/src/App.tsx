@@ -25,6 +25,13 @@ const App = () => {
 
   return (
     <AppContainer>
+      <Title fontSize='4rem'>Capstone Project</Title>
+      <Title fontSize='2rem'>Library Components</Title>
+      <Input type='text' placeholder='Capstone Project' />
+      <Button onClick={handleOnClick}>Get Started</Button>
+      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
+      <ActionButton label='Add Component' />
+
       <Container>
         <CardLeandro
           title='The Joker'
@@ -39,12 +46,6 @@ const App = () => {
           dolore magna aliqua.
         </CardLeandro>
       </Container>
-      <Title fontSize='4rem'>Capstone Project</Title>
-      <Title fontSize='2rem'>Library Components</Title>
-      <Input type='text' placeholder='Capstone Project' />
-      <Button onClick={handleOnClick}>Get Started</Button>
-      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
-      <ActionButton label='Add Component' />
     </AppContainer>
   )
 }
@@ -53,7 +54,7 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,8 +63,9 @@ const AppContainer = styled.div`
 `
 
 const Container = styled.div`
-  position: absolute;
-  z-index: 2;
+  /* position: absolute; */
+  /* z-index: 2; */
   top: 10vh;
   left: 20vw;
+  margin: 20px;
 `

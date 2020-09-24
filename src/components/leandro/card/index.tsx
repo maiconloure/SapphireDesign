@@ -14,7 +14,7 @@ interface Props {
   onClick?: () => void
 }
 
-export default function Card({
+const Card = ({
   children,
   title,
   titleSize = '1.8rem',
@@ -25,7 +25,7 @@ export default function Card({
   imageImport,
   imageAlt,
   onClick
-}: Props) {
+}: Props) => {
   return (
     <Box
       style={{
@@ -42,6 +42,8 @@ export default function Card({
     </Box>
   )
 }
+
+export default Card
 
 const Box = styled.div`
   -webkit-backdrop-filter: blur(5px);

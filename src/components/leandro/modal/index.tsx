@@ -15,7 +15,7 @@ interface Props {
   onClick?: () => void
 }
 
-export default function Modal({
+const Modal = ({
   children,
   title,
   titleSize = '1.8rem',
@@ -26,7 +26,7 @@ export default function Modal({
   imageImport,
   imageAlt,
   onClick
-}: Props) {
+}: Props) => {
   return (
     <Background>
       <Card
@@ -45,6 +45,8 @@ export default function Modal({
     </Background>
   )
 }
+
+export default Modal
 
 const Background = styled.div`
   z-index: 2;
