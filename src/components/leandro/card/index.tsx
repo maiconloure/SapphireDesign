@@ -80,6 +80,8 @@ const Image = styled.img`
   border-radius: 8px;
 
   &:hover {
+    transition: 1s;
+    transform: scale(1.1);
     box-shadow: 1px 1px 14px black;
     cursor: pointer;
   }
