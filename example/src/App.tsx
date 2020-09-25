@@ -58,6 +58,36 @@ const App = () => {
         </CardLeandro>
       </Container>
 
+
+
+      <Modal
+        title='Login'
+        toggleModal={{ showModal, setShowModal }}
+        styles={{ size: 'bigger', fontSize: 'bigger' }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          <Input type='text' placeholder='Your Email' />
+          <Input type='password' placeholder='Your Password' />
+          <Button onClick={handleOnClick}>Login</Button>
+        </div>
+      </Modal>
+      <Test>
+        <CloseButton
+          styles={{
+            position: 'right',
+            size: 'big'
+          }}
+          toggleModal={{ showModal, setShowModal }}
+        />
+      </Test>
+
       <CardLite
         cardWidth={280}
         cardMargin={10}
@@ -143,34 +173,6 @@ const App = () => {
         </ContainerLite>
       </CardLite>
 
-
-      <Modal
-        title='Login'
-        toggleModal={{ showModal, setShowModal }}
-        styles={{ size: 'bigger', fontSize: 'bigger' }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}
-        >
-          <Input type='text' placeholder='Your Email' />
-          <Input type='password' placeholder='Your Password' />
-          <Button onClick={handleOnClick}>Login</Button>
-        </div>
-      </Modal>
-      <Test>
-        <CloseButton
-          styles={{
-            position: 'right',
-            size: 'big'
-          }}
-          toggleModal={{ showModal, setShowModal }}
-        />
-      </Test>
     </AppContainer>
   )
 }
