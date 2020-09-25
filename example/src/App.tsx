@@ -67,8 +67,8 @@ const App = () => {
 
       <Modal
         title='Login'
-        toggleModal={{ showModal, setShowModal }}
-        styles={{ size: 'bigger', fontSize: 'bigger' }}
+        data={[showModal, setShowModal]}
+        styles={{ size: 'medium', fontSize: 'large' }}
       >
         <div
           style={{
@@ -86,10 +86,10 @@ const App = () => {
       <Test>
         <CloseButton
           styles={{
-            position: 'right',
-            size: 'big'
+            position: 'left',
+            size: 'large'
           }}
-          toggleModal={{ showModal, setShowModal }}
+          data={[setShowModal]}
         />
       </Test>
     </AppContainer>

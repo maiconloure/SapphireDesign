@@ -15,10 +15,9 @@ interface Props {
     size?: string
   }
 
-  toggleModal: {
-    showModal?: boolean
-    setShowModal: (props: boolean) => void
-  }
+  data: [
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ]
 }
 
 const StyleDefaultState = {
@@ -26,18 +25,19 @@ const StyleDefaultState = {
   colorSecondary: '#ffc200',
   colorComplementary: '#ffc200',
   bgColorPrimary: '#00437d',
-  bgColorSecondary: '#00437d',
+  bgColorSecondary: '#0002',
   bgColorComplementary: '#00437d',
   position: '',
   size: ''
 }
 
-const CloseButton = ({ children, styles, toggleModal }: Props) => {
-  const { setShowModal } = toggleModal
+const CloseButton = ({ children, styles, data }: Props) => {
+  const [callback] = data
 
   return (
     <XButton
-      onClick={() => setShowModal(false)}
+      // eslint-disable-next-line standard/no-callback-literal
+      onClick={() => callback(false)}
       styles={{ ...StyleDefaultState, ...styles }}
     >
       {children || 'X'}
@@ -48,9 +48,9 @@ const CloseButton = ({ children, styles, toggleModal }: Props) => {
 export default CloseButton
 
 const XButton = styled.button<{ styles?: any }>`
-  background-color: ${(props) => props.styles.bgColorComplementary};
-  color: ${(props) => props.styles.colorComplementary};
-  border: 1px solid #999;
+  background-color: ${(props) => props.styles.bgColorPrimary};
+  color: ${(props) => props.styles.colorPrimary};
+  border: 1px solid ${(props) => props.styles.bgColorSecondary};
   border-radius: 50%;
   text-align: center;
   position: absolute;
@@ -60,49 +60,66 @@ const XButton = styled.button<{ styles?: any }>`
   ${(props) =>
     props.styles.position === 'left'
       ? `
-        left: -12px;
-        top: -18px;
-        `
-      : props.styles.position === 'left-bottom'
-      ? `
-        left: -12px;
-        bottom: -10px;
-        `
+        left: 0px;
+        top: 0px;
+      `
       : props.styles.position === 'right'
       ? `
+        right: 0px;
+        top: 0px;
+      `
+      : props.styles.position === 'left-out-top'
+      ? `
+        left: -12px;
+        top: -18px;
+        `
+      : props.styles.position === 'right-out-top'
+      ? `
         right: -12px;
         top: -18px;
         `
-      : props.styles.position === 'right-bottom'
+      : props.styles.position === 'left-out-bottom'
+      ? `
+        left: -12px;
+        bottom: -10px;
+        `
+      : props.styles.position === 'right-out-bottom'
       ? `
         right: -12px;
         bottom: -10px;
         `
-      : ``}
+      : `
+  `}
 
   ${(props) =>
-    props.styles.size === 'big'
+    props.styles.size === 'small'
+      ? `
+        width: 18px;
+        line-height: 15px;
+        font-size: 10px;
+      `
+      : props.styles.size === 'medium'
+      ? `
+        width: 25px;
+        line-height: 22px;
+        font-size: 14px;
+        `
+      : props.styles.size === 'large'
       ? `
         width: 34px;
         line-height: 32px;
         font-size: 16px;
         `
-      : props.styles.size === 'bigger'
+      : props.styles.size === 'largest'
       ? `
         width: 48px;
         line-height: 45px;
         font-size: 21px;
         `
-      : props.styles.size === 'mini'
-      ? `
-        width: 18px;
-        line-height: 15px;
-        font-size: 10px;
-        `
       : `
         width: 25px;
         line-height: 22px;
-        `}
+  `}
 
   :active {
     opacity: 0.6;
