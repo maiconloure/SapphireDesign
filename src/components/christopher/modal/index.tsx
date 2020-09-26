@@ -28,10 +28,10 @@ interface Props {
     size?: string
   }
 
-  toggleModal: {
-    showModal: boolean
-    setShowModal: (props: boolean) => void
-  }
+  data: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ]
 }
 
 const StyleDefaultState = {
@@ -47,16 +47,16 @@ const StyleDefaultState = {
   size: ''
 }
 
-const Modal = ({ styles, title, children, toggleModal }: Props) => {
-  const { showModal, setShowModal } = toggleModal
+const Modal = ({ styles, title, children, data }: Props) => {
+  const [boolean, callback] = data
   const newStyles = { ...StyleDefaultState, ...styles }
 
   return (
-    <Shadow showModal={showModal}>
-      <StyledModal styles={newStyles} showModal={showModal}>
+    <Shadow showModal={boolean}>
+      <StyledModal styles={newStyles} showModal={boolean}>
         <CloseButton
-          toggleModal={{ showModal, setShowModal }}
-          styles={{ position: 'right', size: newStyles.fontSize }}
+          data={[callback]}
+          styles={{ position: 'right-out-top', size: newStyles.fontSize }}
         />
         <Title styles={newStyles}>{title}</Title>
         <Container styles={newStyles}>{children}</Container>
@@ -75,8 +75,8 @@ const Shadow = styled.div<{ showModal: boolean }>`
     height: 100vh;
     width: 100vw;
     background: #0009;
-    transition: 0.2s;
-    `}
+    transition: 0.3s;
+  `}
 `
 
 const StyledModal = styled.div<{ styles?: any; showModal: boolean }>`
@@ -95,40 +95,41 @@ const StyledModal = styled.div<{ styles?: any; showModal: boolean }>`
   border: none;
   padding: 3px;
   z-index: 9999;
-  transition: 0.2s;
+  transition: 0.3s;
 
   ${(props) =>
-    props.styles.size === 'big'
+    props.styles.size === 'small'
       ? `
-      min-width: 450px;
-      max-width: 600px;
-      min-height: 500px;
+        min-width: 250px;
+        max-width: 320px;
+        min-height: 300px;
       `
-      : props.styles.size === 'bigger'
+      : props.styles.size === 'medium'
       ? `
-      min-width: 750px;
-      max-width: 1200px;
-      min-height: 800px;
+        min-width: 300px;
+        max-width: 350px;
+        min-height: 400px;
       `
-      : props.styles.size === 'normal'
+      : props.styles.size === 'large'
       ? `
-      min-width: 300px;
-      max-width: 350px;
-      min-height: 400px;
+        min-width: 450px;
+        max-width: 600px;
+        min-height: 500px;
       `
-      : props.styles.size === 'mini'
+      : props.styles.size === 'largest'
       ? `
-      min-width: 250px;
-      max-width: 320px;
-      min-height: 300px;
+        min-width: 750px;
+        max-width: 1200px;
+        min-height: 800px;
       `
       : `
-      `}
+  `}
 
   ${(props) =>
     props.showModal
       ? 'opacity: 1; pointer-events: auto;'
-      : `opacity: 0; left: -750px`}
+      : `opacity: 0; left: -750px
+  `}
 `
 
 const Title = styled.h1<{ styles?: any }>`
@@ -138,45 +139,46 @@ const Title = styled.h1<{ styles?: any }>`
   top: 0px;
   margin: 5px;
   overflow: hidden;
-  ${(props) =>
-    props.styles.fontSize === 'big'
-      ? `
-      font-size: 45px;
-      `
-      : props.styles.fontSize === 'bigger'
-      ? `
-      font-size: 55px;
-      `
-      : props.styles.fontSize === 'normal'
-      ? `
-      font-size: 30px;
-      `
-      : props.styles.fontSize === 'mini'
-      ? `
-      font-size: 20px;
-      `
-      : `
-      `}
 
   ${(props) =>
-    props.styles.size === 'big'
+    props.styles.fontSize === 'small'
       ? `
-      width: 400px;
+        font-size: 20px;
       `
-      : props.styles.size === 'bigger'
+      : props.styles.fontSize === 'medium'
       ? `
-      width: 700px;
+        font-size: 30px;
       `
-      : props.styles.size === 'normal'
+      : props.styles.fontSize === 'large'
       ? `
-      width: 270px;
+        font-size: 45px;
       `
-      : props.styles.size === 'mini'
+      : props.styles.fontSize === 'largest'
       ? `
-      width: 220px;
+        font-size: 55px;
       `
       : `
-      `}
+  `}
+
+  ${(props) =>
+    props.styles.size === 'small'
+      ? `
+        width: 220px;
+      `
+      : props.styles.size === 'medium'
+      ? `
+        width: 270px;
+      `
+      : props.styles.size === 'large'
+      ? `
+        width: 400px;
+      `
+      : props.styles.size === 'largest'
+      ? `
+        width: 700px;
+      `
+      : `
+  `}
 `
 
 const ScrollBar = styled.div`
@@ -200,9 +202,10 @@ const ScrollBar = styled.div`
 
 const Container = styled(ScrollBar)<{ styles?: any }>`
   overflow: auto;
-  margin-top: ${(props) =>
-    ['bigger', 'big'].includes(props.styles.fontSize) ? `75px` : `40px`};
-  display: content-box;
-  max-height: ${(props) => props.styles.maxHeight}vh;
   padding: 50px;
+  display: content-box;
+
+  max-height: ${(props) => props.styles.maxHeight}vh;
+  margin-top: ${(props) =>
+    ['large', 'largest'].includes(props.styles.fontSize) ? `75px` : `40px`};
 `

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import logo from './assets/thumb.jpg'
 import joker from './images/joker.jpg'
-
+import { motion } from 'framer-motion'
 import {
+  Logo,
   Button,
   DarkButton,
   ActionButton,
   Input,
+  PasswordInput,
   Title,
   // ModalLeandro,
   CardLeandro,
@@ -36,18 +39,28 @@ const App = () => {
 
   return (
     <AppContainer>
-      <Title fontSize='4rem'>Capstone Project</Title>
-      <Title fontSize='2rem'>Library Components</Title>
-      <Input type='text' placeholder='Capstone Project' />
-      <Button onClick={handleOnClick}>Get Started</Button>
-      <DarkButton onClick={handleOnClick}>Get Started</DarkButton>
-      <ActionButton label='Add Component' />
+      <SubContainer>
+        <Logo image={logo} />
+        <Title fontSize='3.8rem'>Sapphire Design</Title>
+        <Title fontSize='1.6rem' color='#000'>
+          Library Components
+        </Title>
+        <Input type='text' placeholder='Let the games begin' />
+        <PasswordInput placeholder='Enter the password' />
+        <Button onClick={handleOnClick}>Login</Button>
+        <DarkButton onClick={handleOnClick}>Register</DarkButton>
+        <ActionButton label='Add Component' />
+      </SubContainer>
 
-      <Container>
+      <Container
+        drag
+        dragMomentum={false}
+        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+      >
         <CardLeandro
           title='The Joker'
           titleSize='48px'
-          boxWidth='36vw'
+          boxWidth='32vw'
           imageImport={joker}
           fontColor='#869198'
           onClick={imageClick}
@@ -62,8 +75,8 @@ const App = () => {
 
       <Modal
         title='Login'
-        toggleModal={{ showModal, setShowModal }}
-        styles={{ size: 'bigger', fontSize: 'bigger' }}
+        data={[showModal, setShowModal]}
+        styles={{ size: 'medium', fontSize: 'large' }}
       >
         <div
           style={{
@@ -81,10 +94,10 @@ const App = () => {
       <Test>
         <CloseButton
           styles={{
-            position: 'right',
-            size: 'big'
+            position: 'left',
+            size: 'large'
           }}
-          toggleModal={{ showModal, setShowModal }}
+          data={[setShowModal]}
         />
       </Test>
 
@@ -181,19 +194,21 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: #018ef5;
 `
-
-const Container = styled.div`
-  /* position: absolute; */
-  /* z-index: 2; */
-  top: 10vh;
-  left: 20vw;
+const SubContainer = styled.div`
+  margin-top: 180px;
+`
+const Container = styled(motion.div)`
+  position: absolute;
+  z-index: 2;
+  top: 0vh;
+  left: 0vw;
   margin: 20px;
 `
 
