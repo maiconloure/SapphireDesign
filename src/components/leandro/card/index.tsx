@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import CloseButton from '../../christopher/closeButton'
 
 interface Props {
   children: string | React.ReactNode
@@ -12,6 +13,12 @@ interface Props {
   imageImport?: string
   imageAlt?: string
   onClick?: () => void
+  closeable?: boolean
+
+  data?: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ]
 }
 
 const Card = ({
@@ -24,8 +31,12 @@ const Card = ({
   fontColor = '#00ff98',
   imageImport,
   imageAlt,
-  onClick
+  onClick,
+  data = [true, () => {}],
+  closeable = false
 }: Props) => {
+  const [boolean, callback] = data
+
   return (
     <Box
       style={{
@@ -34,11 +45,22 @@ const Card = ({
         marginLeft: leftSpacing
       }}
     >
+      <ButtonAdjuster>
+        {closeable && (
+          <CloseButton
+            data={[callback]}
+            styles={{ position: 'right-out-top' }}
+          />
+        )}
+      </ButtonAdjuster>
+
       <Title style={{ fontSize: titleSize }}>{title}</Title>
-      <Content>
-        <Image src={imageImport} alt={imageAlt} onClick={onClick} />
-        <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
-      </Content>
+      {boolean && (
+        <Content>
+          <Image src={imageImport} alt={imageAlt} onClick={onClick} />
+          <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
+        </Content>
+      )}
     </Box>
   )
 }
@@ -50,13 +72,13 @@ const Box = styled.div`
   backdrop-filter: blur(5px);
   background: rgba(30, 30, 30, 0.7);
 
+  position: relative;
   display: flex;
   flex-flow: column;
 
   z-index: 3;
-  min-height: 20vh;
   height: fit-content;
-  padding: 2vh 3vw 2vh 3vw;
+  padding: 1vh 2vw 1vh 2vw;
   border-radius: 8px;
   border: 2px solid #111;
   box-shadow: 0 3px 6px black;
@@ -68,7 +90,7 @@ const Title = styled.h1`
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 200;
   color: #0089ff;
-  margin-bottom: 2.4rem;
+  margin-bottom: 2rem;
 `
 
 const Content = styled.div`
@@ -104,4 +126,10 @@ const Paragraph = styled.p`
   line-height: 1.6rem;
   margin-top: 48px;
   border-radius: 8px;
+`
+
+const ButtonAdjuster = styled.div`
+  position: absolute;
+  top: 24px;
+  right: 20px;
 `

@@ -26,10 +26,15 @@ import {
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
+  const [showCard, setShowCard] = useState(true)
 
   const handleOnClick = () => {
     console.log('FUNCIONOU')
     setShowModal(true)
+  }
+
+  const closeCard = () => {
+    setShowCard(!showCard)
   }
 
   const imageClick = () => {
@@ -59,19 +64,18 @@ const App = () => {
       >
         <CardLeandro
           title='The Joker'
-          titleSize='48px'
           boxWidth='32vw'
           imageImport={joker}
           fontColor='#869198'
           onClick={imageClick}
+          closeable
+          data={[showCard, closeCard]}
         >
           Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
           elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
           dolore magna aliqua.
         </CardLeandro>
       </Container>
-
-
 
       <Modal
         title='Login'
@@ -101,82 +105,64 @@ const App = () => {
         />
       </Test>
 
-      <CardLite
-        cardWidth={280}
-        cardMargin={10}
-        cardPadding={10}
-      >
+      <CardLite cardWidth={280} cardMargin={10} cardPadding={10}>
         <ContainerLite flexContent={'flex-start'} gap={5}>
-          <ImageLite src={'https://images-americanas.b2w.io/produtos/01/00/item/17796/0/17796086_1GG.jpg'}
+          <ImageLite
+            src={
+              'https://images-americanas.b2w.io/produtos/01/00/item/17796/0/17796086_1GG.jpg'
+            }
             roundImage={`${50}%`}
-            imgHeight={30} />
+            imgHeight={30}
+          />
 
           <InnerContainerLite innerFlexContent={'flex-start'}>
-            <TextLite
-              fontSize={15}
-              Ypos={0}
-              Xpos={10}
-            >
+            <TextLite fontSize={15} Ypos={0} Xpos={10}>
               Some person
             </TextLite>
-            <TextLite
-              fontSize={10}
-              Ypos={4}
-              Xpos={10}
-            >
+            <TextLite fontSize={10} Ypos={4} Xpos={10}>
               some date
             </TextLite>
           </InnerContainerLite>
         </ContainerLite>
 
         <ContainerLite flexContent={'center'} gap={5}>
-          <ImageLite src={'https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/super_nintendo_5/H2x1_SNES_SuperMarioKart.jpg'}
-            imgHeight={200} />
+          <ImageLite
+            src={
+              'https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/super_nintendo_5/H2x1_SNES_SuperMarioKart.jpg'
+            }
+            imgHeight={200}
+          />
         </ContainerLite>
 
         <ContainerLite flexContent={'flex-start'} gap={5}>
-          <TextLite
-            fontSize={12}
-          >
-            ANOTHER PERSON
-          </TextLite>
+          <TextLite fontSize={12}>ANOTHER PERSON</TextLite>
         </ContainerLite>
 
         <ContainerLite flexContent={'space-around'} gap={10}>
-          <TextLite
-            fontSize={15}
-            Ypos={-5}
-
-          >
-            "A cool comment, another cool comment , just a simple comment, i`m tired of typing..."
+          <TextLite fontSize={15} Ypos={-5}>
+            "A cool comment, another cool comment , just a simple comment, i`m
+            tired of typing..."
           </TextLite>
         </ContainerLite>
         <ContainerLite flexContent={'space-evenly'} gap={5}>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
+          <TextLite fontSize={12} cursor={'pointer'} hoverColor={'#CCC'}>
             Like!
           </TextLite>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
+          <TextLite fontSize={12} cursor={'pointer'} hoverColor={'#CCC'}>
             Comment!
           </TextLite>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
+          <TextLite fontSize={12} cursor={'pointer'} hoverColor={'#CCC'}>
             Share!
           </TextLite>
         </ContainerLite>
         <ContainerLite flexContent={'flex-start'} gap={5}>
-          <ImageLite src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
-            roundImage={`${50}%`} imgHeight={30} />
+          <ImageLite
+            src={
+              'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'
+            }
+            roundImage={`${50}%`}
+            imgHeight={30}
+          />
           <InputLite
             type={'text'}
             placeholder={'comment...'}
@@ -185,7 +171,6 @@ const App = () => {
           />
         </ContainerLite>
       </CardLite>
-
     </AppContainer>
   )
 }
