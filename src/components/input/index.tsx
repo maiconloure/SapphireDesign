@@ -41,7 +41,6 @@ const Input = ({
 export default Input
 
 const BasicInput = styled.div`
-  width: 240px;
   padding: 10px;
 `
 
