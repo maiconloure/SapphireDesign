@@ -17,7 +17,7 @@ const Input = ({
   placeholder = '',
   font = 'Inter',
   fontSize = '1rem',
-  weight: 500,
+  weight = 500,
   color = '#014D82',
   width = '220px',
   height = '30px'
@@ -33,7 +33,6 @@ const Input = ({
         width={width}
         height={height}
         weight={weight}
-
       />
     </BasicInput>
   )
