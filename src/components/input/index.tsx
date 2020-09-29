@@ -64,6 +64,7 @@ const Inpt = styled.input<{
   background-color: #fff;
   padding: 10px 10px;
   transition: 0.2s;
+  color: ${(props) => props.color};
 
   &::placeholder {
     color: ${(props) => props.color};
