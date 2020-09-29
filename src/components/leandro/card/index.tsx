@@ -11,9 +11,9 @@ interface Props {
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
-  imageImports?: [{ image: HTMLImageElement; user: string }]
+  imageImports?: [{ image: string; user: string }]
   imageAlt?: string
-  onClick?: () => void
+  handleClick?(user: string): void
   closeable?: boolean
 
   data?: [
@@ -32,7 +32,7 @@ const Card = ({
   fontColor = '#00ff98',
   imageImports = [{ image: noUserImage, user: 'none' }],
   imageAlt,
-  onClick,
+  handleClick,
   data = [true, () => {}],
   closeable = false
 }: Props) => {
@@ -59,9 +59,17 @@ const Card = ({
       {boolean && (
         <Content>
           <div>
-            {imageImports.map(({ image }) => {
-              return <Image src={image} alt={imageAlt} onClick={onClick} />
-            })}
+            {imageImports &&
+              imageImports.map(({ image, user }) => {
+                return (
+                  <Image
+                    src={image}
+                    alt={imageAlt}
+                    title={user}
+                    onClick={() => handleClick(user)}
+                  />
+                )
+              })}
           </div>
           <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
         </Content>
@@ -104,7 +112,7 @@ const Content = styled.div`
   align-items: center;
 `
 
-const Image = styled.img<HTMLImageElement>`
+const Image = styled.img`
   width: 10%;
   border: 2px solid #111;
   border-radius: 900px;

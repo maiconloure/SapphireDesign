@@ -23,8 +23,6 @@ const Modal = ({
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#869198',
-  imageImport,
-  imageAlt,
   onClick
 }: Props) => {
   return (
@@ -36,8 +34,6 @@ const Modal = ({
         topSpacing={topSpacing}
         leftSpacing={leftSpacing}
         fontColor={fontColor}
-        imageImport={imageImport}
-        imageAlt={imageAlt}
         onClick={onClick}
       >
         {children}
