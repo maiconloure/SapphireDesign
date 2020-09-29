@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
-import joker from './images/joker.jpg'
+import joker from './images/joker-face.jpg'
 import { motion } from 'framer-motion'
 import {
   Logo,
@@ -57,15 +57,11 @@ const App = () => {
         <ActionButton label='Add Component' />
       </SubContainer>
 
-      <Container
-        drag
-        dragMomentum={false}
-        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      >
+      <Container drag dragMomentum={false}>
         <CardLeandro
           title='The Joker'
           boxWidth='32vw'
-          imageImport={joker}
+          imageImports={[joker]}
           fontColor='#869198'
           onClick={imageClick}
           closeable

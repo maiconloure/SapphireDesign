@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import CloseButton from '../../christopher/closeButton'
+import noUserImage from './no-user.jpg'
 
 interface Props {
   children: string | React.ReactNode
@@ -10,7 +11,7 @@ interface Props {
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
-  imageImport?: string
+  imageImports?: [string]
   imageAlt?: string
   onClick?: () => void
   closeable?: boolean
@@ -29,7 +30,7 @@ const Card = ({
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#00ff98',
-  imageImport,
+  imageImports = [noUserImage],
   imageAlt,
   onClick,
   data = [true, () => {}],
@@ -57,7 +58,11 @@ const Card = ({
       <Title style={{ fontSize: titleSize }}>{title}</Title>
       {boolean && (
         <Content>
-          <Image src={imageImport} alt={imageAlt} onClick={onClick} />
+          <div>
+            {imageImports.map((image) => {
+              return <Image src={image} alt={imageAlt} onClick={onClick} />
+            })}
+          </div>
           <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
         </Content>
       )}
@@ -100,9 +105,9 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  width: 90%;
+  width: 10%;
   border: 2px solid #111;
-  border-radius: 8px;
+  border-radius: 900px;
 
   &:hover {
     transition: 0.4s;
