@@ -55,6 +55,7 @@ export default PasswordInput
 
 const PassWord = styled.div`
   padding: 10px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
 `
