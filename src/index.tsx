@@ -9,13 +9,14 @@ import Strong from './components/leandro/strong'
 import ModalLeandro from './components/leandro/modal'
 import Modal from './components/christopher/modal'
 import CloseButton from './components/christopher/closeButton'
-import CardLite from './components/rafael/SimpleCard/CardLite'
-import ContainerLite from './components/rafael/SimpleCard/ContainerLite'
-import ImageLite from './components/rafael/SimpleCard/ImageLite'
-import InnerContainerLite from './components/rafael/SimpleCard/InnerContainerLite'
-import TextLite from './components/rafael/SimpleCard/TextLite'
-import InputLite from './components/rafael/SimpleCard/InputLite'
 import Logo from './components/logo'
+import PlanCard from './components/rafael/PlanCard/Card'
+import PlanContainer from './components/rafael/PlanCard/Container'
+import PlanImage from './components/rafael/PlanCard/Image'
+import PlanInnerContainer from './components/rafael/PlanCard/InnerContainer'
+import PlanMainContainer from './components/rafael/PlanCard/MainContainer'
+import PlanText from './components/rafael/PlanCard/Text'
+import PlanLine from './components/rafael/PlanCard/Line'
 
 export {
   Logo,
@@ -30,10 +31,11 @@ export {
   ModalLeandro,
   Modal,
   CloseButton,
-  CardLite,
-  ContainerLite,
-  ImageLite,
-  InnerContainerLite,
-  TextLite,
-  InputLite
+  PlanCard,
+  PlanContainer,
+  PlanImage,
+  PlanInnerContainer,
+  PlanMainContainer,
+  PlanText,
+  PlanLine
 }

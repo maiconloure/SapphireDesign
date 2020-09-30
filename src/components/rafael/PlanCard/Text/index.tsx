@@ -9,16 +9,26 @@ interface CardProps {
   cursor?: any
   hoverColor?: any
   textAlign?: any
+  backgroundColor?: any
+  XPadding?: any
+  height?: any
+  fontStyle?: any
+  fontColor?: any
 }
 
-const TextLite = ({
+const PlanText = ({
   children,
   fontSize,
   Ypos,
   Xpos,
   cursor,
   hoverColor,
-  textAlign
+  textAlign,
+  backgroundColor,
+  XPadding,
+  height,
+  fontStyle,
+  fontColor = '#014d82'
 }: CardProps) => {
   return (
     <TextComponent
@@ -28,13 +38,18 @@ const TextLite = ({
       cursor={cursor}
       hoverColor={hoverColor}
       textAlign={textAlign}
+      backgroundColor={backgroundColor}
+      XPadding={XPadding}
+      height={height}
+      fontStyle={fontStyle}
+      fontColor={fontColor}
     >
       {children}
     </TextComponent>
   )
 }
 
-export default TextLite
+export default PlanText
 
 export const TextComponent = styled.h1<{
   fontSize: string
@@ -43,12 +58,22 @@ export const TextComponent = styled.h1<{
   cursor: string
   hoverColor: string
   textAlign: string
+  backgroundColor: string
+  XPadding: number
+  height: number
+  fontStyle: string
+  fontColor: string
 }>`
-  color: #44a;
+  color: ${(props) => `${props.fontColor}`};
   font-weight: 700;
+  font-style: ${(props) => `${props.fontStyle}`};
+  height: ${(props) => `${props.height}px`};
   margin: 1px;
+  padding: ${(props) => `0px ${props.XPadding}px`};
   font-family: 'Inter', Helvetica, sans - serif;
   position: relative;
+  border-radius: 5px;
+  background-color: ${(props) => `${props.backgroundColor}`};
   text-align: ${(props) => `${props.textAlign}`};
   font-size: ${(props) => `${props.fontSize}px`};
   bottom: ${(props) => `${props.Ypos}px`};
