@@ -10,6 +10,7 @@ interface InputProps {
   color?: string
   width?: string
   height?: string
+  onTextChange?: (text: string) => void
 }
 
 const Input = ({
@@ -20,7 +21,8 @@ const Input = ({
   weight = 500,
   color = '#014D82',
   width = '220px',
-  height = '30px'
+  height = '30px',
+  onTextChange = () => {}
 }: InputProps) => {
   return (
     <BasicInput>
@@ -33,6 +35,7 @@ const Input = ({
         width={width}
         height={height}
         weight={weight}
+        onChange={(e) => onTextChange(e.currentTarget.value)}
       />
     </BasicInput>
   )

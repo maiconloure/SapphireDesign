@@ -10,6 +10,7 @@ interface PasswordInputProps {
   color?: string
   width?: string
   height?: string
+  onTextChange: (text: string) => void
 }
 
 const PasswordInput = ({
@@ -19,7 +20,8 @@ const PasswordInput = ({
   weight = 500,
   color = '#014D82',
   width = '220px',
-  height = '30px'
+  height = '30px',
+  onTextChange
 }: PasswordInputProps) => {
   const [type, setType] = React.useState('password')
   return (
@@ -33,6 +35,7 @@ const PasswordInput = ({
         color={color}
         width={width}
         height={height}
+        onChange={(e) => onTextChange(e.currentTarget.value)}
       />
       {type === 'password' ? (
         <CloseEye
@@ -66,6 +69,7 @@ const Inpt = styled.input<{
   color: string
   width: string
   height: string
+  // onChange: () => void
 }>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
