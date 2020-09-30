@@ -10,6 +10,7 @@ interface InputProps {
   color?: string
   width?: string
   height?: string
+  onTextChange?: (text: string) => void
 }
 
 const Input = ({
@@ -20,7 +21,8 @@ const Input = ({
   weight = 500,
   color = '#014D82',
   width = '220px',
-  height = '30px'
+  height = '30px',
+  onTextChange = () => {}
 }: InputProps) => {
   return (
     <BasicInput>
@@ -33,6 +35,7 @@ const Input = ({
         width={width}
         height={height}
         weight={weight}
+        onChange={(e) => onTextChange(e.currentTarget.value)}
       />
     </BasicInput>
   )
@@ -40,10 +43,7 @@ const Input = ({
 
 export default Input
 
-const BasicInput = styled.div`
-  width: 240px;
-  padding: 10px;
-`
+const BasicInput = styled.div``
 
 const Inpt = styled.input<{
   font: string
@@ -62,8 +62,8 @@ const Inpt = styled.input<{
   font-size: ${(props) => props.fontSize};
   border-radius: 3px;
   background-color: #fff;
-  padding: 10px 10px;
   transition: 0.2s;
+  color: ${(props) => props.color};
 
   &::placeholder {
     color: ${(props) => props.color};
