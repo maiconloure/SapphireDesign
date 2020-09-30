@@ -1,4 +1,4 @@
-# Shaphire Design, library components
+# Sapphire Design, library components
 
 ![Logo Image](./example/src/assets/logo.png?raw=true 'Logo')
 
