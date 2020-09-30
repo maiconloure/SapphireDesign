@@ -49,7 +49,6 @@ export const ImageComponent = styled.img<{
   margin: ${(props) => `0px ${props.XMargin}px`};
   alt: 'image';
   max-width: 100%;
-  border: 0.5px solid rgba(0, 0, 0, 0.5);
   height: ${(props) => `${props.imgHeight}px`};
   border-radius: ${(props) => `${props.roundImage}`};
 `

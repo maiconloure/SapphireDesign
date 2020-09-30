@@ -2,27 +2,61 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 interface ButtonProps {
-  children: string | number
+  children?: string | number
+  font?: string
+  fontSize?: string
+  weight?: number
+  color?: string
+  width?: string
+  height?: string
   onClick?: () => void
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
-  return <Btn onClick={onClick}>{children}</Btn>
+const Button = ({
+  children = '',
+  font = 'Inter',
+  fontSize = '1.4rem',
+  weight = 700,
+  color = '#014D82',
+  width = '170px',
+  height = '55px',
+  onClick
+}: ButtonProps) => {
+  return (
+    <Btn
+      font={font}
+      fontSize={fontSize}
+      color={color}
+      width={width}
+      height={height}
+      onClick={onClick}
+      weight={weight}
+    >
+      {children}
+    </Btn>
+  )
 }
 
 export default Button
 
-const Btn = styled.button`
-  width: 170px;
-  height: 55px;
+const Btn = styled.button<{
+  font: string
+  fontSize: string
+  weight: number
+  color: string
+  width: string
+  height: string
+}>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border: none;
   outline: none;
   cursor: pointer;
   margin: 10px 10px;
-  font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #3b8ef6;
+  font-family: ${(props) => props.font}, Helvetica, sans-serif;
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
   border-radius: 6px;
   background-color: #fff;
   transition: 0.2s;

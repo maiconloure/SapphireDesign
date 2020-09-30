@@ -4,12 +4,36 @@ import styled from 'styled-components'
 interface InputProps {
   type: string
   placeholder?: string
+  font?: string
+  fontSize?: string
+  weight?: number
+  color?: string
+  width?: string
+  height?: string
 }
 
-const Input = ({ type, placeholder }: InputProps) => {
+const Input = ({
+  type,
+  placeholder = '',
+  font = 'Inter',
+  fontSize = '1rem',
+  weight = 500,
+  color = '#014D82',
+  width = '220px',
+  height = '30px'
+}: InputProps) => {
   return (
     <BasicInput>
-      <Inpt type={type} placeholder={placeholder} />
+      <Inpt
+        type={type}
+        placeholder={placeholder}
+        font={font}
+        fontSize={fontSize}
+        color={color}
+        width={width}
+        height={height}
+        weight={weight}
+      />
     </BasicInput>
   )
 }
@@ -21,22 +45,28 @@ const BasicInput = styled.div`
   padding: 10px;
 `
 
-const Inpt = styled.input`
-  width: 220px;
-  /* margin-left: 10px; */
+const Inpt = styled.input<{
+  font: string
+  fontSize: string
+  weight: number
+  color: string
+  width: string
+  height: string
+}>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border: none;
   outline: none;
-  font-family: 'Roboto', Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: #3b8ef6;
+  font-family: ${(props) => props.font}, Helvetica, sans-serif;
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.fontSize};
   border-radius: 3px;
   background-color: #fff;
   padding: 10px 10px;
   transition: 0.2s;
 
   &::placeholder {
-    color: #3b8ef6;
+    color: ${(props) => props.color};
   }
 
   &:hover {
