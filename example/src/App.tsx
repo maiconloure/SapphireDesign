@@ -11,17 +11,18 @@ import {
   Input,
   PasswordInput,
   Title,
-  // ModalLeandro,
+  //ModalLeandro,
   CardLeandro,
   Strong,
   Modal,
   CloseButton,
-  CardLite,
-  ContainerLite,
-  ImageLite,
-  InnerContainerLite,
-  TextLite,
-  InputLite
+  PlanCard,
+  PlanContainer,
+  PlanImage,
+  PlanMainContainer,
+  PlanInnerContainer,
+  PlanText,
+  PlanLine,
 } from 'capstone'
 
 const App = () => {
@@ -55,7 +56,7 @@ const App = () => {
       <Container
         drag
         dragMomentum={false}
-        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+      // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       >
         <CardLeandro
           title='The Joker'
@@ -100,92 +101,112 @@ const App = () => {
           data={[setShowModal]}
         />
       </Test>
-
-      <CardLite
-        cardWidth={280}
-        cardMargin={10}
+      <PlanCard
+        cardMargin={5}
         cardPadding={10}
+        cardWidth={275}
+        cardBgColor={'#cdd9e2'}
+
       >
-        <ContainerLite flexContent={'flex-start'} gap={5}>
-          <ImageLite src={'https://images-americanas.b2w.io/produtos/01/00/item/17796/0/17796086_1GG.jpg'}
-            roundImage={`${50}%`}
-            imgHeight={30} />
 
-          <InnerContainerLite innerFlexContent={'flex-start'}>
-            <TextLite
-              fontSize={15}
-              Ypos={0}
-              Xpos={10}
+        <PlanContainer flexContent={'space-between'} gap={0}>
+          <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
+            <PlanText
+              fontSize={20}
+              fontStyle={'italic'}
             >
-              Some person
-            </TextLite>
-            <TextLite
+              #sprint1
+          </PlanText>
+            <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/482/482556.svg'}
+              imgHeight={25} XMargin={3} />
+            <PlanImage src={'https://image.flaticon.com/icons/png/512/65/65000.png'}
+              imgHeight={25} XMargin={3} />
+          </PlanInnerContainer>
+          <PlanText
+            fontSize={20}
+            fontStyle={'italic'}
+          >
+            02:00
+          </PlanText>
+
+        </PlanContainer>
+        <PlanMainContainer gap={5}>
+          <PlanInnerContainer innerFlexDirection={'column'} innerWidth={85} innerPadding={15}>
+            <PlanText
+              fontSize={18}
+            >
+              Dormir o dia inteiro
+          </PlanText>
+            <PlanText
               fontSize={10}
-              Ypos={4}
-              Xpos={10}
+              Ypos={-2.5}
+              fontStyle={'italic'}
             >
-              some date
-            </TextLite>
-          </InnerContainerLite>
-        </ContainerLite>
-
-        <ContainerLite flexContent={'center'} gap={5}>
-          <ImageLite src={'https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/super_nintendo_5/H2x1_SNES_SuperMarioKart.jpg'}
-            imgHeight={200} />
-        </ContainerLite>
-
-        <ContainerLite flexContent={'flex-start'} gap={5}>
-          <TextLite
-            fontSize={12}
-          >
-            ANOTHER PERSON
-          </TextLite>
-        </ContainerLite>
-
-        <ContainerLite flexContent={'space-around'} gap={10}>
-          <TextLite
-            fontSize={15}
+              Durmo mesmo quero mais é que se dane essa po*** , quero ver alguém falar pra eu não dormir!
+          </PlanText>
+          </PlanInnerContainer>
+          <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+            imgHeight={25} imgPosition={'relative'} Xpos={245} Ypos={75} />
+          <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/564/564619.svg'}
+            imgHeight={25} imgPosition={'relative'} Xpos={235} Ypos={42.5} />
+          <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/3208/3208663.svg'}
+            imgHeight={25} imgPosition={'relative'} Xpos={195} Ypos={10} />
+        </PlanMainContainer>
+        <PlanContainer flexContent={'space-between'} gap={0}>
+          <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
+            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+          </PlanInnerContainer>
+          <PlanText
+            fontSize={18}
+            backgroundColor={'white'}
+            XPadding={4}
             Ypos={-5}
+            height={22}
+            fontStyle={'italic'}
+          >
+            28/09
+          </PlanText>
+        </PlanContainer>
+      </PlanCard>
+      <PlanCard
+        cardMargin={5}
+        cardPadding={5}
+        cardWidth={130}
+        cardBgColor={'#E05555'}
 
-          >
-            "A cool comment, another cool comment , just a simple comment, i`m tired of typing..."
-          </TextLite>
-        </ContainerLite>
-        <ContainerLite flexContent={'space-evenly'} gap={5}>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
-            Like!
-          </TextLite>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
-            Comment!
-          </TextLite>
-          <TextLite
-            fontSize={12}
-            cursor={'pointer'}
-            hoverColor={'#CCC'}
-          >
-            Share!
-          </TextLite>
-        </ContainerLite>
-        <ContainerLite flexContent={'flex-start'} gap={5}>
-          <ImageLite src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
-            roundImage={`${50}%`} imgHeight={30} />
-          <InputLite
-            type={'text'}
-            placeholder={'comment...'}
-            inputWidth={225}
-            inputHeight={30}
-          />
-        </ContainerLite>
-      </CardLite>
 
+      >
+
+        <PlanContainer flexContent={'center'} gap={5}>
+          <PlanText
+            fontSize={18}
+            fontStyle={'italic'}
+            fontColor={'white'}
+            textAlign={'center'}
+          >
+            Ajudou o colega?
+          </PlanText>
+
+        </PlanContainer>
+        <PlanLine LineThickness={3}
+          LineColor={'white'}
+          LineHeight={1} />
+        <PlanContainer flexContent={'center'} gap={5}>
+          <PlanText
+            fontSize={18}
+            fontStyle={'italic'}
+            fontColor={'white'}
+            textAlign={'center'}
+          >
+            Quando?
+          </PlanText>
+        </PlanContainer>
+      </PlanCard>
     </AppContainer>
   )
 }
@@ -194,9 +215,9 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100vh; 
   display: flex;
-  align-items: center;
+   align-items: center; 
   justify-content: center;
   flex-direction: column;
   background-color: #018ef5;
