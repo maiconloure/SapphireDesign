@@ -4,17 +4,21 @@ import CloseButton from '../../christopher/closeButton'
 import noUserImage from './no-user.jpg'
 
 interface Props {
-  children: string | React.ReactNode
+  children?: string | React.ReactNode
   title?: string
   titleSize?: string
+  titleUnderline?: string
   boxWidth: string
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
-  imageImports?: [{ image: string; user: string }]
+  avatars?: ImageProps[]
   imageAlt?: string
-  handleClick?(user: string): void
+  handleClick?(user: string): any
   closeable?: boolean
+  backgroundColor?: string
+  text?: string | React.ReactNode
+  borderDetails?: string
 
   data?: [
     boolean,
@@ -22,19 +26,27 @@ interface Props {
   ]
 }
 
+interface ImageProps {
+  image: string
+  user: string
+}
+
 const Card = ({
   children,
   title,
   titleSize = '1.8rem',
+  titleUnderline = '2px solid #014D82',
   boxWidth,
   topSpacing = '0',
   leftSpacing = '0',
-  fontColor = '#00ff98',
-  imageImports = [{ image: noUserImage, user: 'none' }],
+  fontColor = '#0089ff',
+  avatars = [{ image: noUserImage, user: 'none' }],
   imageAlt,
-  handleClick,
+  handleClick = () => {},
   data = [true, () => {}],
-  closeable = false
+  closeable = false,
+  backgroundColor = 'rgba(30, 30, 30, 0.7)',
+  borderDetails = '2px solid #111'
 }: Props) => {
   const [boolean, callback] = data
 
@@ -43,24 +55,43 @@ const Card = ({
       style={{
         width: boxWidth,
         marginTop: topSpacing,
-        marginLeft: leftSpacing
+        marginLeft: leftSpacing,
+        background: backgroundColor,
+        border: borderDetails
       }}
     >
       <ButtonAdjuster>
         {closeable && (
           <CloseButton
             data={[callback]}
-            styles={{ position: 'right-out-top' }}
-          />
+            styles={{
+              position: 'right-out-top',
+              size: 'largest',
+              bgColorPrimary: 'transparent',
+              bgColorSecondary: 'transparent',
+              colorPrimary: fontColor
+            }}
+          >
+            _
+          </CloseButton>
         )}
       </ButtonAdjuster>
-
-      <Title style={{ fontSize: titleSize }}>{title}</Title>
+      <TitleContainer>
+        <Title
+          style={{
+            fontSize: titleSize,
+            color: fontColor,
+            borderBottom: titleUnderline
+          }}
+        >
+          {title}
+        </Title>
+      </TitleContainer>
       {boolean && (
         <Content>
-          <div>
-            {imageImports &&
-              imageImports.map(({ image, user }) => {
+          <AvatarsContainer>
+            {avatars &&
+              avatars.map(({ image, user }: ImageProps) => {
                 return (
                   <Image
                     src={image}
@@ -70,8 +101,8 @@ const Card = ({
                   />
                 )
               })}
-          </div>
-          <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
+          </AvatarsContainer>
+          <ChildrenContainer>{children}</ChildrenContainer>
         </Content>
       )}
     </Box>
@@ -93,17 +124,20 @@ const Box = styled.div`
   height: fit-content;
   padding: 1vh 2vw 1vh 2vw;
   border-radius: 8px;
-  border: 2px solid #111;
-  box-shadow: 0 3px 6px black;
   box-sizing: border-box;
   position: relative;
 `
 
+const TitleContainer = styled.div`
+  width: 100%;
+  margin-bottom: 1.6rem;
+`
+
 const Title = styled.h1`
   font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 200;
-  color: #0089ff;
-  margin-bottom: 2rem;
+  font-weight: 600;
+  width: fit-content;
+  padding-bottom: 4px;
 `
 
 const Content = styled.div`
@@ -113,9 +147,9 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  width: 10%;
-  border: 2px solid #111;
+  width: 3rem;
   border-radius: 900px;
+  margin: 1px;
 
   &:hover {
     transition: 0.4s;
@@ -130,19 +164,23 @@ const Image = styled.img`
   }
 `
 
-const Paragraph = styled.p`
-  font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 1.2rem;
-  background: rgba(30, 30, 30, 0.75);
-  padding: 1.2rem;
-  line-height: 1.6rem;
-  margin-top: 48px;
-  border-radius: 8px;
-`
-
 const ButtonAdjuster = styled.div`
   position: absolute;
-  top: 24px;
+  top: 10px;
   right: 20px;
+`
+
+const AvatarsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+`
+
+const ChildrenContainer = styled.div`
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
 `

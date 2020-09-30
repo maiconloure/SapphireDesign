@@ -31,7 +31,7 @@ const StyleDefaultState = {
   size: ''
 }
 
-const CloseButton = ({ children, styles, data }: Props) => {
+const CloseButton = ({ children = 'X', styles, data }: Props) => {
   const [callback] = data
 
   return (
@@ -40,7 +40,7 @@ const CloseButton = ({ children, styles, data }: Props) => {
       onClick={() => callback(false)}
       styles={{ ...StyleDefaultState, ...styles }}
     >
-      {children || 'X'}
+      {children}
     </XButton>
   )
 }

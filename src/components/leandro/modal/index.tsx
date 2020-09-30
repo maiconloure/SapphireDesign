@@ -10,9 +10,6 @@ interface Props {
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
-  imageImport?: string
-  imageAlt?: string
-  onClick?: () => void
 }
 
 const Modal = ({
@@ -22,8 +19,7 @@ const Modal = ({
   boxWidth,
   topSpacing = '0',
   leftSpacing = '0',
-  fontColor = '#869198',
-  onClick
+  fontColor = '#869198'
 }: Props) => {
   return (
     <Background>
@@ -34,7 +30,6 @@ const Modal = ({
         topSpacing={topSpacing}
         leftSpacing={leftSpacing}
         fontColor={fontColor}
-        onClick={onClick}
       >
         {children}
       </Card>

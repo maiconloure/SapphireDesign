@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker-face.jpg'
+import napoleon from './images/napoleon-dynamite.jpg'
 import { motion } from 'framer-motion'
 import {
   Logo,
@@ -14,7 +15,6 @@ import {
   Title,
   // ModalLeandro,
   CardLeandro,
-  Strong,
   Modal,
   CloseButton,
   CardLite,
@@ -60,17 +60,20 @@ const App = () => {
 
       <Container drag dragMomentum={false}>
         <CardLeandro
-          title='The Joker'
+          title='Product Backlog'
           boxWidth='32vw'
-          imageImports={[{ image: joker, user: 'Joker' }]}
-          fontColor='#869198'
-          handleClick={() => imageClick}
+          avatars={[
+            { image: joker, user: 'Joker' },
+            { image: napoleon, user: 'Napoleon Dynamite' }
+          ]}
+          fontColor='#014D82'
+          handleClick={imageClick}
           closeable
           data={[showCard, closeCard]}
+          backgroundColor='rgba(58, 166, 242, 0.5)'
+          borderDetails='none'
         >
-          Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
-          elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
-          dolore magna aliqua.
+          <Box contentEditable='true'>Digite algo para começar ;)</Box>
         </CardLeandro>
       </Container>
 
@@ -99,7 +102,9 @@ const App = () => {
             size: 'large'
           }}
           data={[setShowModal]}
-        />
+        >
+          -
+        </CloseButton>
       </Test>
 
       <CardLite cardWidth={280} cardMargin={10} cardPadding={10}>
@@ -183,9 +188,11 @@ const AppContainer = styled.div`
   flex-direction: column;
   background-color: #018ef5;
 `
+
 const SubContainer = styled.div`
   margin-top: 180px;
 `
+
 const Container = styled(motion.div)`
   position: absolute;
   z-index: 2;
@@ -200,4 +207,18 @@ const Test = styled.div`
   background-color: red;
   position: relative;
   margin: 20px;
+`
+
+const Box = styled.div`
+  -moz-appearance: textfield-multiline;
+  -webkit-appearance: textarea;
+  padding: 10px;
+  outline: none;
+  font-family: 'inter', sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
+  min-height: 100px;
+  background: white;
+  border-radius: 6px;
+  text-align: left;
 `
