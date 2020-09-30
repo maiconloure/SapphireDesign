@@ -15,9 +15,27 @@ yarn add capstone
 
 ## Components
 
-```
-Button, DarkButton, actionButton, input, passwordInput
-
+```javascript
+import {
+  Logo,
+  Button,
+  DarkButton,
+  ActionButton,
+  Input,
+  PasswordInput,
+  Title,
+  ModalLeandro,
+  CardLeandro,
+  Strong,
+  Modal,
+  CloseButton,
+  CardLite,
+  ContainerLite,
+  ImageLite,
+  InnerContainerLite,
+  TextLite,
+  InputLite
+} from 'capstone'
 ```
 
 ## License
