@@ -38,6 +38,10 @@ const App = () => {
     setShowModal(false)
   }
 
+  const handleForm = (evt: any) => {
+    console.log(evt)
+  }
+
   return (
     <AppContainer>
       <SubContainer>
@@ -46,8 +50,19 @@ const App = () => {
         <Title fontSize='1.6rem' color='#000'>
           Library Components
         </Title>
-        <Input type='text' placeholder='Let the games begin' />
-        <PasswordInput placeholder='Enter the password' />
+        <Input
+          type='text'
+          placeholder='usuário'
+          color='#014D82'
+          fontSize='22px'
+          onTextChange={handleForm}
+        />
+        <PasswordInput
+          placeholder='senha'
+          color='#014D82'
+          fontSize='22px'
+          onTextChange={handleForm}
+        />
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>
         <ActionButton label='Add Component' />
@@ -71,8 +86,6 @@ const App = () => {
           dolore magna aliqua.
         </CardLeandro>
       </Container>
-
-
 
       <Modal
         title='Login'
