@@ -40,9 +40,7 @@ const Input = ({
 
 export default Input
 
-const BasicInput = styled.div`
-  padding: 10px;
-`
+const BasicInput = styled.div``
 
 const Inpt = styled.input<{
   font: string
@@ -61,7 +59,6 @@ const Inpt = styled.input<{
   font-size: ${(props) => props.fontSize};
   border-radius: 3px;
   background-color: #fff;
-  padding: 10px 10px;
   transition: 0.2s;
   color: ${(props) => props.color};
 

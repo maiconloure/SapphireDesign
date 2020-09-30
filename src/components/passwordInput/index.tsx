@@ -54,7 +54,6 @@ const PasswordInput = ({
 export default PasswordInput
 
 const PassWord = styled.div`
-  padding: 10px;
   margin-right: 10px;
   display: flex;
   align-items: center;
@@ -78,7 +77,6 @@ const Inpt = styled.input<{
   color: ${(props) => props.color};
   border-radius: 3px;
   background-color: #fff;
-  padding: 10px 10px;
   transition: 0.2s;
 
   &::placeholder {
@@ -98,7 +96,7 @@ const OpenEye = styled(ImEye)<{
   color: string
 }>`
   width: ${(props) => props.fontSize};
-  margin-left: -32px;
+  margin-left: -36px;
   color: ${(props) => props.color};
   cursor: pointer;
   transition: 0.2s;
@@ -108,7 +106,7 @@ const CloseEye = styled(ImEyeBlocked)<{
   color: string
 }>`
   width: ${(props) => props.fontSize};
-  margin-left: -32px;
+  margin-left: -36px;
   color: ${(props) => props.color};
   cursor: pointer;
   transition: 0.2s;
