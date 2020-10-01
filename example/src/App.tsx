@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
-import joker from './images/joker.jpg'
+// import joker from './images/joker-face.jpg'
+// import napoleon from './images/napoleon-dynamite.jpg'
 import { motion } from 'framer-motion'
 import {
   Logo,
@@ -13,7 +15,6 @@ import {
   Title,
   //ModalLeandro,
   CardLeandro,
-  Strong,
   Modal,
   CloseButton,
   PlanCard,
@@ -27,15 +28,20 @@ import {
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
+  // const [showCard, setShowCard] = useState(true)
+  const history = useHistory()
 
   const handleOnClick = () => {
     console.log('FUNCIONOU')
     setShowModal(true)
   }
 
-  const imageClick = () => {
-    console.log('deu bom.')
-    setShowModal(false)
+  // const closeCard = () => {
+  //   setShowCard(!showCard)
+  // }
+
+  const imageClick = (user: string): void => {
+    history.push(`/${user}`)
   }
 
   const handleForm = (evt: any) => {
@@ -68,22 +74,22 @@ const App = () => {
         <ActionButton label='Add Component' />
       </SubContainer>
 
-      <Container
-        drag
-        dragMomentum={false}
-        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      >
+      <Container drag dragMomentum={false}>
         <CardLeandro
-          title='The Joker'
-          titleSize='48px'
+          // title='Product Backlog'
           boxWidth='32vw'
-          imageImport={joker}
-          fontColor='#869198'
-          onClick={imageClick}
+          // avatars={[
+          //   { image: joker, user: 'Joker' },
+          //   { image: napoleon, user: 'Napoleon Dynamite' }
+          // ]}
+          // fontColor='#014D82'
+          handleClick={imageClick}
+          // closeable
+          // data={[showCard, closeCard]}
+          // backgroundColor='rgba(58, 166, 242, 0.5)'
+          borderDetails='none'
         >
-          Lorem ipsum dolor sit amet, <Strong>consectetur</Strong> adipiscing
-          elit, sed do eiusmod tempor <Strong>incididunt</Strong> ut labore et
-          dolore magna aliqua.
+          {/* <Box contentEditable='true'>Digite algo para começar ;)</Box> */}
         </CardLeandro>
       </Container>
 
@@ -112,7 +118,9 @@ const App = () => {
             size: 'large'
           }}
           data={[setShowModal]}
-        />
+        >
+          -
+        </CloseButton>
       </Test>
       <PlanCard
         cardMargin={5}
@@ -123,7 +131,7 @@ const App = () => {
         <PlanContainer flexContent={'space-between'} gap={0}>
           <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
             <PlanText fontSize={20} fontStyle={'italic'}>
-              #sprint1111
+              #sprint1
             </PlanText>
             <PlanImage
               src={
@@ -167,8 +175,8 @@ const App = () => {
             src={'https://www.flaticon.com/svg/static/icons/svg/564/564619.svg'}
             imgHeight={25}
             imgPosition={'relative'}
-            Xpos={-35}
-            Ypos={150}
+            Xpos={235}
+            Ypos={42.5}
           />
           <PlanImage
             src={
@@ -260,9 +268,11 @@ const AppContainer = styled.div`
   flex-direction: column;
   background-color: #018ef5;
 `
+
 const SubContainer = styled.div`
   margin-top: 180px;
 `
+
 const Container = styled(motion.div)`
   position: absolute;
   z-index: 2;
@@ -278,3 +288,17 @@ const Test = styled.div`
   position: relative;
   margin: 20px;
 `
+
+// const Box = styled.div`
+//   -moz-appearance: textfield-multiline;
+//   -webkit-appearance: textarea;
+//   padding: 10px;
+//   outline: none;
+//   font-family: 'inter', sans-serif;
+//   font-size: 1.4rem;
+//   width: 100%;
+//   min-height: 100px;
+//   background: white;
+//   border-radius: 6px;
+//   text-align: left;
+// `

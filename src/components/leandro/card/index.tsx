@@ -1,44 +1,105 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import CloseButton from '../../christopher/closeButton'
 
 interface Props {
-  children: string | React.ReactNode
+  children?: string | React.ReactNode
   title?: string
   titleSize?: string
-  boxWidth: string
+  titleUnderline?: string
+  boxWidth?: string
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
-  imageImport?: string
-  imageAlt?: string
-  onClick?: () => void
+  avatars?: ImageProps[]
+  handleClick?(user: string): any
+  closeable?: boolean
+  backgroundColor?: string
+  borderDetails?: string
+
+  data?: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ]
+}
+
+interface ImageProps {
+  image: string
+  user: string
 }
 
 const Card = ({
   children,
   title,
   titleSize = '1.8rem',
-  boxWidth,
+  titleUnderline = '2px solid #014D82',
+  boxWidth = 'fit-content',
   topSpacing = '0',
   leftSpacing = '0',
-  fontColor = '#00ff98',
-  imageImport,
-  imageAlt,
-  onClick
+  fontColor = '#0089ff',
+  avatars = [{ image: '', user: '' }],
+  handleClick = () => {},
+  data = [true, () => {}],
+  closeable = false,
+  backgroundColor = 'rgba(30, 30, 30, 0.7)',
+  borderDetails = '2px solid #111'
 }: Props) => {
+  const [boolean, callback] = data
+
   return (
     <Box
       style={{
         width: boxWidth,
         marginTop: topSpacing,
-        marginLeft: leftSpacing
+        marginLeft: leftSpacing,
+        background: backgroundColor,
+        border: borderDetails
       }}
     >
-      <Title style={{ fontSize: titleSize }}>{title}</Title>
-      <Content>
-        <Image src={imageImport} alt={imageAlt} onClick={onClick} />
-        <Paragraph style={{ color: fontColor }}>{children}</Paragraph>
-      </Content>
+      <ButtonAdjuster>
+        {closeable && (
+          <CloseButton
+            data={[callback]}
+            styles={{
+              position: 'right-out-top',
+              size: 'largest',
+              bgColorPrimary: 'transparent',
+              bgColorSecondary: 'transparent',
+              colorPrimary: fontColor
+            }}
+          >
+            _
+          </CloseButton>
+        )}
+      </ButtonAdjuster>
+      <TitleContainer>
+        <Title
+          style={{
+            fontSize: titleSize,
+            color: fontColor,
+            borderBottom: titleUnderline
+          }}
+        >
+          {title}
+        </Title>
+      </TitleContainer>
+      {boolean && (
+        <Content>
+          <AvatarsContainer>
+            {avatars &&
+              avatars.map(({ image, user }: ImageProps) => {
+                return (
+                  <Image
+                    src={image}
+                    title={user}
+                    onClick={() => handleClick(user)}
+                  />
+                )
+              })}
+          </AvatarsContainer>
+          <ChildrenContainer>{children}</ChildrenContainer>
+        </Content>
+      )}
     </Box>
   )
 }
@@ -50,25 +111,28 @@ const Box = styled.div`
   backdrop-filter: blur(5px);
   background: rgba(30, 30, 30, 0.7);
 
+  position: relative;
   display: flex;
   flex-flow: column;
 
   z-index: 3;
-  min-height: 20vh;
   height: fit-content;
-  padding: 2vh 3vw 2vh 3vw;
+  padding: 1vh 2vw 1vh 2vw;
   border-radius: 8px;
-  border: 2px solid #111;
-  box-shadow: 0 3px 6px black;
   box-sizing: border-box;
   position: relative;
 `
 
+const TitleContainer = styled.div`
+  width: 100%;
+  margin-bottom: 1.6rem;
+`
+
 const Title = styled.h1`
   font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 200;
-  color: #0089ff;
-  margin-bottom: 2.4rem;
+  font-weight: 600;
+  width: fit-content;
+  padding-bottom: 4px;
 `
 
 const Content = styled.div`
@@ -78,9 +142,9 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  width: 90%;
-  border: 2px solid #111;
-  border-radius: 8px;
+  width: 3rem;
+  border-radius: 900px;
+  margin: 1px;
 
   &:hover {
     transition: 0.4s;
@@ -95,13 +159,23 @@ const Image = styled.img`
   }
 `
 
-const Paragraph = styled.p`
-  font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 1.2rem;
-  background: rgba(30, 30, 30, 0.75);
-  padding: 1.2rem;
-  line-height: 1.6rem;
-  margin-top: 48px;
-  border-radius: 8px;
+const ButtonAdjuster = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 20px;
+`
+
+const AvatarsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+`
+
+const ChildrenContainer = styled.div`
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
 `
