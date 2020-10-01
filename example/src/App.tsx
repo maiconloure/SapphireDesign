@@ -53,7 +53,7 @@ const App = () => {
         <Input
           type='text'
           placeholder='usuário'
-          color='#014D82'
+          //color='#014D82'
           fontSize='22px'
           onTextChange={handleForm}
         />
@@ -63,6 +63,9 @@ const App = () => {
           fontSize='22px'
           onTextChange={handleForm}
         />
+        <PasswordInput placeholder='senha'
+          color='#014D82'
+          fontSize='22px' />
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>
         <ActionButton label='Add Component' />
@@ -128,7 +131,7 @@ const App = () => {
               fontSize={20}
               fontStyle={'italic'}
             >
-              #sprint1
+              #sprint1111
           </PlanText>
             <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/482/482556.svg'}
               imgHeight={25} XMargin={3} />
@@ -161,7 +164,7 @@ const App = () => {
           <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
             imgHeight={25} imgPosition={'relative'} Xpos={245} Ypos={75} />
           <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/564/564619.svg'}
-            imgHeight={25} imgPosition={'relative'} Xpos={235} Ypos={42.5} />
+            imgHeight={25} imgPosition={'relative'} Xpos={-35} Ypos={150} />
           <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/3208/3208663.svg'}
             imgHeight={25} imgPosition={'relative'} Xpos={195} Ypos={10} />
         </PlanMainContainer>
@@ -169,10 +172,10 @@ const App = () => {
           <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
             <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
               roundImage={`${50}%`} imgHeight={25} XMargin={3} />
-            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+            {/* <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
               roundImage={`${50}%`} imgHeight={25} XMargin={3} />
             <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
-              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} /> */}
           </PlanInnerContainer>
           <PlanText
             fontSize={18}
@@ -210,14 +213,24 @@ const App = () => {
           LineColor={'white'}
           LineHeight={1} />
         <PlanContainer flexContent={'center'} gap={5}>
-          <PlanText
-            fontSize={18}
-            fontStyle={'italic'}
-            fontColor={'white'}
-            textAlign={'center'}
-          >
-            Quando?
+          <PlanInnerContainer innerFlexDirection={'column'}>
+            <PlanText
+              fontSize={18}
+              fontStyle={'italic'}
+              fontColor={'white'}
+              textAlign={'center'}
+            >
+              Quando?
           </PlanText>
+            <PlanText
+              fontSize={18}
+              fontStyle={'italic'}
+              fontColor={'white'}
+              textAlign={'center'}
+            >
+              00:00
+          </PlanText>
+          </PlanInnerContainer>
         </PlanContainer>
       </PlanCard>
     </AppContainer>
