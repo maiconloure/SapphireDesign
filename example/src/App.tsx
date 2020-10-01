@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 // import joker from './images/joker-face.jpg'
@@ -29,7 +28,6 @@ import {
 const App = () => {
   const [showModal, setShowModal] = useState(false)
   // const [showCard, setShowCard] = useState(true)
-  const history = useHistory()
 
   const handleOnClick = () => {
     console.log('FUNCIONOU')
@@ -41,7 +39,8 @@ const App = () => {
   // }
 
   const imageClick = (user: string): void => {
-    history.push(`/${user}`)
+    // history.push(`/${user}`)
+    console.log(user)
   }
 
   const handleForm = (evt: any) => {
