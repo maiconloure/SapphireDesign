@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker-face.jpg'
@@ -68,7 +67,7 @@ const App = () => {
         <Input
           type='text'
           placeholder='usuário'
-          //color='#014D82'
+          color='#014D82'
           fontSize='22px'
           onTextChange={handleForm}
         />
