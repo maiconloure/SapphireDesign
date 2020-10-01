@@ -1,23 +1,20 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import CloseButton from '../../christopher/closeButton'
-import noUserImage from './no-user.jpg'
 
 interface Props {
   children?: string | React.ReactNode
   title?: string
   titleSize?: string
   titleUnderline?: string
-  boxWidth: string
+  boxWidth?: string
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
   avatars?: ImageProps[]
-  imageAlt?: string
   handleClick?(user: string): any
   closeable?: boolean
   backgroundColor?: string
-  text?: string | React.ReactNode
   borderDetails?: string
 
   data?: [
@@ -36,12 +33,11 @@ const Card = ({
   title,
   titleSize = '1.8rem',
   titleUnderline = '2px solid #014D82',
-  boxWidth,
+  boxWidth = 'fit-content',
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#0089ff',
-  avatars = [{ image: noUserImage, user: 'none' }],
-  imageAlt,
+  avatars = [{ image: '', user: '' }],
   handleClick = () => {},
   data = [true, () => {}],
   closeable = false,
@@ -95,7 +91,6 @@ const Card = ({
                 return (
                   <Image
                     src={image}
-                    alt={imageAlt}
                     title={user}
                     onClick={() => handleClick(user)}
                   />
