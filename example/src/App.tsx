@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
-// import joker from './images/joker-face.jpg'
-// import napoleon from './images/napoleon-dynamite.jpg'
+import joker from './images/joker-face.jpg'
+import napoleon from './images/napoleon-dynamite.jpg'
 import { motion } from 'framer-motion'
 import {
   Logo,
@@ -13,7 +13,7 @@ import {
   Input,
   PasswordInput,
   Title,
-  //ModalLeandro,
+  ModalLeandro,
   CardLeandro,
   Modal,
   CloseButton,
@@ -28,20 +28,22 @@ import {
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
-  // const [showCard, setShowCard] = useState(true)
-  const history = useHistory()
+  const [showCard, setShowCard] = useState(true)
+  const [showLeandroModal, setShowLeandroModal] = useState(false)
+  // const history = useHistory()
 
   const handleOnClick = () => {
     console.log('FUNCIONOU')
     setShowModal(true)
   }
 
-  // const closeCard = () => {
-  //   setShowCard(!showCard)
-  // }
+  const closeCard = () => {
+    setShowCard(!showCard)
+  }
 
   const imageClick = (user: string): void => {
-    history.push(`/${user}`)
+    console.log(user)
+    setShowLeandroModal(!showLeandroModal)
   }
 
   const handleForm = (evt: any) => {
@@ -50,6 +52,13 @@ const App = () => {
 
   return (
     <AppContainer>
+      {showLeandroModal && (
+        <ModalLeandro
+          data={[showLeandroModal, () => setShowLeandroModal(false)]}
+        >
+          <Box contentEditable='true'>Digite algo para começar ;)</Box>
+        </ModalLeandro>
+      )}
       <SubContainer>
         <Logo image={logo} />
         <Title fontSize='3.8rem'>Sapphire Design</Title>
@@ -76,20 +85,20 @@ const App = () => {
 
       <Container drag dragMomentum={false}>
         <CardLeandro
-          // title='Product Backlog'
+          title='Product Backlog'
           boxWidth='32vw'
-          // avatars={[
-          //   { image: joker, user: 'Joker' },
-          //   { image: napoleon, user: 'Napoleon Dynamite' }
-          // ]}
-          // fontColor='#014D82'
+          avatars={[
+            { image: joker, user: 'Joker' },
+            { image: napoleon, user: 'Napoleon Dynamite' }
+          ]}
+          fontColor='#014D82'
           handleClick={imageClick}
-          // closeable
-          // data={[showCard, closeCard]}
-          // backgroundColor='rgba(58, 166, 242, 0.5)'
+          closeable
+          data={[showCard, closeCard]}
+          backgroundColor='rgba(58, 166, 242, 0.5)'
           borderDetails='none'
         >
-          {/* <Box contentEditable='true'>Digite algo para começar ;)</Box> */}
+          <Box contentEditable='true'>Digite algo para começar ;)</Box>
         </CardLeandro>
       </Container>
 
@@ -291,16 +300,16 @@ const Test = styled.div`
   margin: 20px;
 `
 
-// const Box = styled.div`
-//   -moz-appearance: textfield-multiline;
-//   -webkit-appearance: textarea;
-//   padding: 10px;
-//   outline: none;
-//   font-family: 'inter', sans-serif;
-//   font-size: 1.4rem;
-//   width: 100%;
-//   min-height: 100px;
-//   background: white;
-//   border-radius: 6px;
-//   text-align: left;
-// `
+const Box = styled.div`
+  -moz-appearance: textfield-multiline;
+  -webkit-appearance: textarea;
+  padding: 10px;
+  outline: none;
+  font-family: 'inter', sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
+  min-height: 100px;
+  background: white;
+  border-radius: 6px;
+  text-align: left;
+`

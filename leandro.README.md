@@ -33,11 +33,14 @@ it accepts:
   ```javascript
   import { CardLeandro } from 'capstone'
 
-  const imageClick = (user: string): void => {
-    history.push(`/${user}`)
+  const Component = () => {
+    const imageClick = (user: string): void => {
+      console.log(user)
+    }
+
+    return <CardLeandro handleClick={imageClick} avatars={[{...}]}>...</CardLeandro>
   }
 
-  return <CardLeandro handleClick={imageClick} avatars={[{...}]}>...</CardLeandro>
   ```
 
 - Default values:
@@ -52,3 +55,65 @@ it accepts:
   - closeable = false,
   - backgroundColor = 'rgba(30, 30, 30, 0.7)',
   - borderDetails = '2px solid #111'
+
+## ModalLeandro
+
+Description: This modal is made with a centralized CardLeandro, therefore it accepts most of it's original properties to modulate it's self. It must be controlled by state and, unlike CardLeandro, it does require a property.
+
+- Required prop:
+
+```javascript
+interface Props {
+  data: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ];
+}
+```
+
+It must be handled like this inside it's parent component:
+
+```javascript
+import React, { useState } from 'react'
+import { CardLeandro } from 'capstone'
+
+const Component = () => {
+  const [showLeandroModal, setShowLeandroModal] = useState(false)
+
+  return (
+    <>
+      // actuation example:
+      <button onClick={setShowLeandroModal(true)}>Open LeandroModal</button>
+      {showLeandroModal && (
+        <ModalLeandro
+          data={[showLeandroModal, () => setShowLeandroModal(false)]}
+        >
+          <Box contentEditable='true'>Digite algo para começar ;)</Box>
+        </ModalLeandro>
+      )}
+    </>
+  )
+}
+```
+
+- Other properties (as seen above at CardLeandro doc, all optional):
+
+  - children: string or React.ReactNode
+  - title: string
+  - titleSize: string
+  - titleUnderline: string
+  - boxWidth: string
+  - topSpacing: string
+  - leftSpacing: string
+  - fontColor: string
+  - backgroundColor: string
+  - borderDetails: string
+
+- Default values:
+
+  - titleSize = '1.8rem',
+  - titleUnderline = 'none',
+  - boxWidth = 'fit-content',
+  - topSpacing = '0',
+  - leftSpacing = '0',
+  - fontColor = '#869198',
