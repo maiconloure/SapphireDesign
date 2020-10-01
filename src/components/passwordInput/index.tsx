@@ -6,18 +6,22 @@ interface PasswordInputProps {
   placeholder?: string
   font?: string
   fontSize?: string
+  weight?: number
   color?: string
   width?: string
   height?: string
+  onTextChange: (text: string) => void
 }
 
 const PasswordInput = ({
   placeholder = ' ',
   font = 'Inter',
   fontSize = '1rem',
+  weight = 500,
   color = '#014D82',
   width = '220px',
-  height = '30px'
+  height = '30px',
+  onTextChange
 }: PasswordInputProps) => {
   const [type, setType] = React.useState('password')
   return (
@@ -27,9 +31,11 @@ const PasswordInput = ({
         placeholder={placeholder}
         font={font}
         fontSize={fontSize}
+        weight={weight}
         color={color}
         width={width}
         height={height}
+        onChange={(e) => onTextChange(e.currentTarget.value)}
       />
       {type === 'password' ? (
         <CloseEye
@@ -51,8 +57,7 @@ const PasswordInput = ({
 export default PasswordInput
 
 const PassWord = styled.div`
-  width: 240px;
-  padding: 10px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
 `
@@ -60,21 +65,22 @@ const PassWord = styled.div`
 const Inpt = styled.input<{
   font: string
   fontSize: string
+  weight: number
   color: string
   width: string
   height: string
+  // onChange: () => void
 }>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   border: none;
   outline: none;
   font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.fontSize};
-  color: #3b8ef6;
+  color: ${(props) => props.color};
   border-radius: 3px;
   background-color: #fff;
-  padding: 10px 10px;
   transition: 0.2s;
 
   &::placeholder {
@@ -94,7 +100,7 @@ const OpenEye = styled(ImEye)<{
   color: string
 }>`
   width: ${(props) => props.fontSize};
-  margin-left: -32px;
+  margin-left: -36px;
   color: ${(props) => props.color};
   cursor: pointer;
   transition: 0.2s;
@@ -104,7 +110,7 @@ const CloseEye = styled(ImEyeBlocked)<{
   color: string
 }>`
   width: ${(props) => props.fontSize};
-  margin-left: -32px;
+  margin-left: -36px;
   color: ${(props) => props.color};
   cursor: pointer;
   transition: 0.2s;

@@ -38,6 +38,10 @@ const App = () => {
     setShowModal(false)
   }
 
+  const handleForm = (evt: any) => {
+    console.log(evt)
+  }
+
   return (
     <AppContainer>
       <SubContainer>
@@ -51,9 +55,16 @@ const App = () => {
           placeholder='usuário'
           //color='#014D82'
           fontSize='22px'
+          onTextChange={handleForm}
+        />
+        <PasswordInput
+          placeholder='senha'
+          color='#014D82'
+          fontSize='22px'
+          onTextChange={handleForm}
         />
         <PasswordInput placeholder='senha'
-          //color='#014D82'
+          color='#014D82'
           fontSize='22px' />
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>

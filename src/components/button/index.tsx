@@ -52,7 +52,6 @@ const Btn = styled.button<{
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 10px 10px;
   font-family: ${(props) => props.font}, Helvetica, sans-serif;
   font-weight: ${(props) => props.weight};
   font-size: ${(props) => props.fontSize};
