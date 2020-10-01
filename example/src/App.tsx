@@ -22,7 +22,7 @@ import {
   PlanMainContainer,
   PlanInnerContainer,
   PlanText,
-  PlanLine,
+  PlanLine
 } from 'capstone'
 
 const App = () => {
@@ -63,9 +63,6 @@ const App = () => {
           fontSize='22px'
           onTextChange={handleForm}
         />
-        <PasswordInput placeholder='senha'
-          color='#014D82'
-          fontSize='22px' />
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>
         <ActionButton label='Add Component' />
@@ -74,7 +71,7 @@ const App = () => {
       <Container
         drag
         dragMomentum={false}
-      // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+        // dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       >
         <CardLeandro
           title='The Joker'
@@ -122,56 +119,77 @@ const App = () => {
         cardPadding={10}
         cardWidth={275}
         cardBgColor={'#cdd9e2'}
-
       >
-
         <PlanContainer flexContent={'space-between'} gap={0}>
           <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
-            <PlanText
-              fontSize={20}
-              fontStyle={'italic'}
-            >
+            <PlanText fontSize={20} fontStyle={'italic'}>
               #sprint1111
-          </PlanText>
-            <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/482/482556.svg'}
-              imgHeight={25} XMargin={3} />
-            <PlanImage src={'https://image.flaticon.com/icons/png/512/65/65000.png'}
-              imgHeight={25} XMargin={3} />
+            </PlanText>
+            <PlanImage
+              src={
+                'https://www.flaticon.com/svg/static/icons/svg/482/482556.svg'
+              }
+              imgHeight={25}
+              XMargin={3}
+            />
+            <PlanImage
+              src={'https://image.flaticon.com/icons/png/512/65/65000.png'}
+              imgHeight={25}
+              XMargin={3}
+            />
           </PlanInnerContainer>
-          <PlanText
-            fontSize={20}
-            fontStyle={'italic'}
-          >
+          <PlanText fontSize={20} fontStyle={'italic'}>
             02:00
           </PlanText>
-
         </PlanContainer>
         <PlanMainContainer gap={5}>
-          <PlanInnerContainer innerFlexDirection={'column'} innerWidth={85} innerPadding={15}>
-            <PlanText
-              fontSize={18}
-            >
-              Dormir o dia inteiro
-          </PlanText>
-            <PlanText
-              fontSize={10}
-              Ypos={-2.5}
-              fontStyle={'italic'}
-            >
-              Durmo mesmo quero mais é que se dane essa po*** , quero ver alguém falar pra eu não dormir!
-          </PlanText>
+          <PlanInnerContainer
+            innerFlexDirection={'column'}
+            innerWidth={85}
+            innerPadding={15}
+          >
+            <PlanText fontSize={18}>Dormir o dia inteiro</PlanText>
+            <PlanText fontSize={10} Ypos={-2.5} fontStyle={'italic'}>
+              Durmo mesmo quero mais é que se dane essa po*** , quero ver alguém
+              falar pra eu não dormir!
+            </PlanText>
           </PlanInnerContainer>
-          <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
-            imgHeight={25} imgPosition={'relative'} Xpos={245} Ypos={75} />
-          <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/564/564619.svg'}
-            imgHeight={25} imgPosition={'relative'} Xpos={-35} Ypos={150} />
-          <PlanImage src={'https://www.flaticon.com/svg/static/icons/svg/3208/3208663.svg'}
-            imgHeight={25} imgPosition={'relative'} Xpos={195} Ypos={10} />
+          <PlanImage
+            src={
+              'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'
+            }
+            imgHeight={25}
+            imgPosition={'relative'}
+            Xpos={245}
+            Ypos={75}
+          />
+          <PlanImage
+            src={'https://www.flaticon.com/svg/static/icons/svg/564/564619.svg'}
+            imgHeight={25}
+            imgPosition={'relative'}
+            Xpos={-35}
+            Ypos={150}
+          />
+          <PlanImage
+            src={
+              'https://www.flaticon.com/svg/static/icons/svg/3208/3208663.svg'
+            }
+            imgHeight={25}
+            imgPosition={'relative'}
+            Xpos={195}
+            Ypos={10}
+          />
         </PlanMainContainer>
         <PlanContainer flexContent={'space-between'} gap={0}>
           <PlanInnerContainer innerFlexDirection={'row'} innerPadding={0}>
-            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
-              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+            <PlanImage
+              src={
+                'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'
+              }
+              roundImage={`${50}%`}
+              imgHeight={25}
+              XMargin={3}
+            />
             {/* <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
               roundImage={`${50}%`} imgHeight={25} XMargin={3} />
             <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
@@ -194,10 +212,7 @@ const App = () => {
         cardPadding={5}
         cardWidth={130}
         cardBgColor={'#E05555'}
-
-
       >
-
         <PlanContainer flexContent={'center'} gap={5}>
           <PlanText
             fontSize={18}
@@ -207,11 +222,8 @@ const App = () => {
           >
             Ajudou o colega?
           </PlanText>
-
         </PlanContainer>
-        <PlanLine LineThickness={3}
-          LineColor={'white'}
-          LineHeight={1} />
+        <PlanLine LineThickness={3} LineColor={'white'} LineHeight={1} />
         <PlanContainer flexContent={'center'} gap={5}>
           <PlanInnerContainer innerFlexDirection={'column'}>
             <PlanText
@@ -221,7 +233,7 @@ const App = () => {
               textAlign={'center'}
             >
               Quando?
-          </PlanText>
+            </PlanText>
             <PlanText
               fontSize={18}
               fontStyle={'italic'}
@@ -229,7 +241,7 @@ const App = () => {
               textAlign={'center'}
             >
               00:00
-          </PlanText>
+            </PlanText>
           </PlanInnerContainer>
         </PlanContainer>
       </PlanCard>
@@ -241,9 +253,9 @@ export default App
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 100vh; 
+  height: 100vh;
   display: flex;
-   align-items: center; 
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: #018ef5;
