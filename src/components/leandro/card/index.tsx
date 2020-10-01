@@ -125,7 +125,6 @@ const Box = styled.div`
 
 const TitleContainer = styled.div`
   width: 100%;
-  margin-bottom: 1.6rem;
 `
 
 const Title = styled.h1`
@@ -174,7 +173,7 @@ const AvatarsContainer = styled.div`
 
 const ChildrenContainer = styled.div`
   padding: 0;
-  margin-top: 20px;
+  margin-top: 28px;
   margin-bottom: 20px;
   width: 100%;
   display: flex;
