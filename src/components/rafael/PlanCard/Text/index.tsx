@@ -4,6 +4,7 @@ import styled from 'styled-components'
 interface CardProps {
   children: string | number
   fontSize?: any
+  fontWeight?: number
   Ypos?: any
   Xpos?: any
   cursor?: any
@@ -19,6 +20,7 @@ interface CardProps {
 const PlanText = ({
   children,
   fontSize,
+  fontWeight = 700,
   Ypos,
   Xpos,
   cursor,
@@ -33,6 +35,7 @@ const PlanText = ({
   return (
     <TextComponent
       fontSize={fontSize}
+      fontWeight={fontWeight}
       Ypos={Ypos}
       Xpos={Xpos}
       cursor={cursor}
@@ -53,6 +56,7 @@ export default PlanText
 
 export const TextComponent = styled.h1<{
   fontSize: string
+  fontWeight: number
   Ypos: number
   Xpos: number
   cursor: string
@@ -65,7 +69,7 @@ export const TextComponent = styled.h1<{
   fontColor: string
 }>`
   color: ${(props) => `${props.fontColor}`};
-  font-weight: 700;
+  font-weight: ${(props) => `${props.fontWeight}`};
   font-style: ${(props) => `${props.fontStyle}`};
   height: ${(props) => `${props.height}px`};
   margin: 1px;

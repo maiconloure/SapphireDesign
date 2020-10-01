@@ -226,7 +226,7 @@ const App = () => {
       <PlanCard
         cardMargin={5}
         cardPadding={5}
-        cardWidth={130}
+        cardWidth={180}
         cardBgColor={'#E05555'}
       >
         <PlanContainer flexContent={'center'} gap={5}>
@@ -252,6 +252,7 @@ const App = () => {
             </PlanText>
             <PlanText
               fontSize={18}
+              fontWeight={400}
               fontStyle={'italic'}
               fontColor={'white'}
               textAlign={'center'}
