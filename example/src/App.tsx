@@ -68,7 +68,7 @@ const App = () => {
         <Input
           type='text'
           placeholder='usuário'
-          color='#014D82'
+          //color='#014D82'
           fontSize='22px'
           onTextChange={handleForm}
         />
@@ -207,22 +207,10 @@ const App = () => {
               imgHeight={25}
               XMargin={3}
             />
-            <PlanImage
-              src={
-                'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'
-              }
-              roundImage={`${50}%`}
-              imgHeight={25}
-              XMargin={3}
-            />
-            <PlanImage
-              src={
-                'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'
-              }
-              roundImage={`${50}%`}
-              imgHeight={25}
-              XMargin={3}
-            />
+            {/* <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} />
+            <PlanImage src={'https://www.acasadocogumelo.com/wp-content/uploads/2013/06/luigi2-2.png'}
+              roundImage={`${50}%`} imgHeight={25} XMargin={3} /> */}
           </PlanInnerContainer>
           <PlanText
             fontSize={18}
@@ -254,14 +242,24 @@ const App = () => {
         </PlanContainer>
         <PlanLine LineThickness={3} LineColor={'white'} LineHeight={1} />
         <PlanContainer flexContent={'center'} gap={5}>
-          <PlanText
-            fontSize={18}
-            fontStyle={'italic'}
-            fontColor={'white'}
-            textAlign={'center'}
-          >
-            Quando?
-          </PlanText>
+          <PlanInnerContainer innerFlexDirection={'column'}>
+            <PlanText
+              fontSize={18}
+              fontStyle={'italic'}
+              fontColor={'white'}
+              textAlign={'center'}
+            >
+              Quando?
+            </PlanText>
+            <PlanText
+              fontSize={18}
+              fontStyle={'italic'}
+              fontColor={'white'}
+              textAlign={'center'}
+            >
+              00:00
+            </PlanText>
+          </PlanInnerContainer>
         </PlanContainer>
       </PlanCard>
     </AppContainer>
