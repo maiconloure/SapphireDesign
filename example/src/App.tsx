@@ -58,7 +58,7 @@ const App = () => {
         <Input
           type='text'
           placeholder='usuário'
-          //color='#014D82'
+          color='#014D82'
           fontSize='22px'
           onTextChange={handleForm}
         />
