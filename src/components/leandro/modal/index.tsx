@@ -8,7 +8,10 @@ interface Props {
   title?: string
   titleSize?: string
   titleUnderline?: string
+  titleUnderlineOffset?: string
+  titleMarginBottom?: string
   boxWidth?: string
+  boxPadding?: string
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
@@ -26,7 +29,10 @@ const Modal = ({
   title,
   titleSize = '1.8rem',
   titleUnderline = 'none',
+  titleUnderlineOffset = '4px',
+  titleMarginBottom = '0',
   boxWidth = 'fit-content',
+  boxPadding = '1vh 2vw 1vh 2vw',
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#869198',
@@ -42,7 +48,10 @@ const Modal = ({
         title={title}
         titleSize={titleSize}
         titleUnderline={titleUnderline}
+        titleUnderlineOffset={titleUnderlineOffset}
+        titleMarginBottom={titleMarginBottom}
         boxWidth={boxWidth}
+        boxPadding={boxPadding}
         topSpacing={topSpacing}
         leftSpacing={leftSpacing}
         fontColor={fontColor}
