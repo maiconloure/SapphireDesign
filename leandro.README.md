@@ -8,6 +8,8 @@ it accepts:
 - title: string that holds the title, customized as bellow.
   - titleSize: string like css 'font-size'.
   - titleUnderline: string like css 'border-bottom'.
+  - titleUnderlineOffset: string setting title's 'padding-bottom'.
+  - titleMarginBottom: string like css setting title whole container 'margin-bottom' if necessary.
   - fontColor: string like css 'color'.
 - avatars: array of objects that must contain:
 
@@ -22,6 +24,7 @@ it accepts:
 - Other properties:
 
   - boxWidth: string setting the card 'width' just like in css.
+  - boxPadding: string setting the card 'width' just like in css.
   - backgroundColor: string setting the card 'background' just like in css.
   - topSpacing: string setting the card 'margin-top' just like in css.
   - leftSpacing: string setting the card 'margin-left' just like in css.
@@ -47,7 +50,10 @@ it accepts:
 
   - titleSize = '1.8rem',
   - titleUnderline = '2px solid #014D82',
+  - titleUnderlineOffset = '4px',
+  - titleMarginBottom = '0',
   - boxWidth = 'fit-content',
+  - boxPadding = '1vh 2vw 1vh 2vw',
   - topSpacing = '0',
   - leftSpacing = '0',
   - fontColor = '#0089ff',
@@ -102,7 +108,10 @@ const Component = () => {
   - title: string
   - titleSize: string
   - titleUnderline: string
+  - titleUnderlineOffset: string
+  - titleMarginBottom: string
   - boxWidth: string
+  - boxPadding: string
   - topSpacing: string
   - leftSpacing: string
   - fontColor: string
@@ -113,7 +122,10 @@ const Component = () => {
 
   - titleSize = '1.8rem',
   - titleUnderline = 'none',
+  - titleUnderlineOffset = '4px',
+  - titleMarginBottom = '0',
   - boxWidth = 'fit-content',
+  - boxPadding = '1vh 2vw 1vh 2vw',
   - topSpacing = '0',
   - leftSpacing = '0',
   - fontColor = '#869198',

@@ -7,7 +7,10 @@ interface Props {
   title?: string
   titleSize?: string
   titleUnderline?: string
+  titleUnderlineOffset?: string
+  titleMarginBottom?: string
   boxWidth?: string
+  boxPadding?: string
   topSpacing?: string
   leftSpacing?: string
   fontColor?: string
@@ -33,7 +36,10 @@ const Card = ({
   title,
   titleSize = '1.8rem',
   titleUnderline = '2px solid #014D82',
+  titleUnderlineOffset = '4px',
+  titleMarginBottom = '0',
   boxWidth = 'fit-content',
+  boxPadding = '1vh 2vw 1vh 2vw',
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#0089ff',
@@ -53,7 +59,8 @@ const Card = ({
         marginTop: topSpacing,
         marginLeft: leftSpacing,
         background: backgroundColor,
-        border: borderDetails
+        border: borderDetails,
+        padding: boxPadding
       }}
     >
       <ButtonAdjuster>
@@ -72,11 +79,12 @@ const Card = ({
           </CloseButton>
         )}
       </ButtonAdjuster>
-      <TitleContainer>
+      <TitleContainer style={{ marginBottom: titleMarginBottom }}>
         <Title
           style={{
             fontSize: titleSize,
             color: fontColor,
+            paddingBottom: titleUnderlineOffset,
             borderBottom: titleUnderline
           }}
         >
@@ -117,7 +125,6 @@ const Box = styled.div`
 
   z-index: 3;
   height: fit-content;
-  padding: 1vh 2vw 1vh 2vw;
   border-radius: 8px;
   box-sizing: border-box;
   position: relative;
@@ -131,7 +138,6 @@ const Title = styled.h1`
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 600;
   width: fit-content;
-  padding-bottom: 4px;
 `
 
 const Content = styled.div`
@@ -148,7 +154,7 @@ const Image = styled.img`
   &:hover {
     transition: 0.4s;
     transform: scale(1.1);
-    box-shadow: 1px 1px 14px black;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
 
