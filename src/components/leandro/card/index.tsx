@@ -20,7 +20,12 @@ interface Props {
   backgroundColor?: string
   borderDetails?: string
 
-  data?: [
+  minimizeDataPass?: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
+  ]
+
+  closeDataPass?: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
   ]
@@ -45,70 +50,95 @@ const Card = ({
   fontColor = '#0089ff',
   avatars = [{ image: '', user: '' }],
   handleClick = () => {},
-  data = [true, () => {}],
+  minimizeDataPass = [true, () => {}],
+  closeDataPass = [true, () => {}],
   closeable = false,
   backgroundColor = 'rgba(30, 30, 30, 0.7)',
   borderDetails = '2px solid #111'
 }: Props) => {
-  const [boolean, callback] = data
+  const [showContent, minimizeCallback] = minimizeDataPass
+  const [showCard, closeCallback] = closeDataPass
 
   return (
-    <Box
-      style={{
-        width: boxWidth,
-        marginTop: topSpacing,
-        marginLeft: leftSpacing,
-        background: backgroundColor,
-        border: borderDetails,
-        padding: boxPadding
-      }}
-    >
-      <ButtonAdjuster>
-        {closeable && (
-          <CloseButton
-            data={[callback]}
-            styles={{
-              position: 'right-out-top',
-              size: 'largest',
-              bgColorPrimary: 'transparent',
-              bgColorSecondary: 'transparent',
-              colorPrimary: fontColor
-            }}
-          >
-            _
-          </CloseButton>
-        )}
-      </ButtonAdjuster>
-      <TitleContainer style={{ marginBottom: titleMarginBottom }}>
-        <Title
+    <div>
+      {showCard && (
+        <Box
           style={{
-            fontSize: titleSize,
-            color: fontColor,
-            paddingBottom: titleUnderlineOffset,
-            borderBottom: titleUnderline
+            width: boxWidth,
+            marginTop: topSpacing,
+            marginLeft: leftSpacing,
+            background: backgroundColor,
+            border: borderDetails,
+            padding: boxPadding
           }}
         >
-          {title}
-        </Title>
-      </TitleContainer>
-      {boolean && (
-        <Content>
-          <AvatarsContainer>
-            {avatars &&
-              avatars.map(({ image, user }: ImageProps) => {
-                return (
-                  <Image
-                    src={image}
-                    title={user}
-                    onClick={() => handleClick(user)}
-                  />
-                )
-              })}
-          </AvatarsContainer>
-          <ChildrenContainer>{children}</ChildrenContainer>
-        </Content>
+          <div>
+            {closeable && (
+              <div>
+                <MinimizeButtonAdjuster>
+                  <CloseButton
+                    data={[minimizeCallback]}
+                    styles={{
+                      position: 'right-out-top',
+                      size: 'largest',
+                      bgColorPrimary: 'transparent',
+                      bgColorSecondary: 'transparent',
+                      colorPrimary: fontColor
+                    }}
+                  >
+                    _
+                  </CloseButton>
+                </MinimizeButtonAdjuster>
+                <CloseButtonAdjuster>
+                  <CloseButton
+                    data={[closeCallback]}
+                    styles={{
+                      position: 'right-out-top',
+                      size: 'largest',
+                      bgColorPrimary: 'transparent',
+                      bgColorSecondary: 'transparent',
+                      colorPrimary: fontColor
+                    }}
+                  >
+                    x
+                  </CloseButton>
+                </CloseButtonAdjuster>
+              </div>
+            )}
+          </div>
+          <TitleContainer style={{ marginBottom: titleMarginBottom }}>
+            <Title
+              style={{
+                fontSize: titleSize,
+                color: fontColor,
+                paddingBottom: titleUnderlineOffset,
+                borderBottom: titleUnderline
+              }}
+            >
+              {title}
+            </Title>
+          </TitleContainer>
+          {showContent && (
+            <Content>
+              <AvatarsContainer>
+                {avatars &&
+                  avatars.map(({ image, user }: ImageProps, key: number) => {
+                    return (
+                      <Image
+                        key={key}
+                        src={image}
+                        title={user}
+                        onClick={() => handleClick(user)}
+                      />
+                    )
+                  })}
+              </AvatarsContainer>
+              <ChildrenContainer>{children}</ChildrenContainer>
+            </Content>
+          )}
+        </Box>
       )}
-    </Box>
+    </div>
   )
 }
 
@@ -164,10 +194,16 @@ const Image = styled.img`
   }
 `
 
-const ButtonAdjuster = styled.div`
+const MinimizeButtonAdjuster = styled.div`
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 9px;
+  right: 46px;
+`
+
+const CloseButtonAdjuster = styled.div`
+  position: absolute;
+  top: 18px;
+  right: 16px;
 `
 
 const AvatarsContainer = styled.div`

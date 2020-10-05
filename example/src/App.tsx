@@ -27,6 +27,7 @@ import {
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
+  const [showCardContent, setShowCardContent] = useState(true)
   const [showCard, setShowCard] = useState(true)
   const [showLeandroModal, setShowLeandroModal] = useState(false)
   // const history = useHistory()
@@ -34,10 +35,6 @@ const App = () => {
   const handleOnClick = () => {
     console.log('FUNCIONOU')
     setShowModal(true)
-  }
-
-  const closeCard = () => {
-    setShowCard(!showCard)
   }
 
   const imageClick = (user: string): void => {
@@ -93,7 +90,11 @@ const App = () => {
           fontColor='#014D82'
           handleClick={imageClick}
           closeable
-          data={[showCard, closeCard]}
+          minimizeDataPass={[
+            showCardContent,
+            () => setShowCardContent(!showCardContent)
+          ]}
+          closeDataPass={[showCard, () => setShowCard(false)]}
           backgroundColor='rgba(58, 166, 242, 0.5)'
           borderDetails='none'
         >
