@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker-face.jpg'
@@ -65,7 +64,7 @@ const App = () => {
         <Input
           type='text'
           placeholder='usuário'
-          //color='#014D82'
+          color='#014D82'
           fontSize='22px'
           onTextChange={handleForm}
         />
@@ -228,7 +227,7 @@ const App = () => {
       <PlanCard
         cardMargin={5}
         cardPadding={5}
-        cardWidth={130}
+        cardWidth={180}
         cardBgColor={'#E05555'}
       >
         <PlanContainer flexContent={'center'} gap={5}>
@@ -254,6 +253,7 @@ const App = () => {
             </PlanText>
             <PlanText
               fontSize={18}
+              fontWeight={400}
               fontStyle={'italic'}
               fontColor={'white'}
               textAlign={'center'}
