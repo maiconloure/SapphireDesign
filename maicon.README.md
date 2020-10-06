@@ -81,6 +81,18 @@ import { Input, PasswordInput } from 'capstone-project';
   />
 
 ```
+___
+
+## Feed
+
+```
+import { Feed } from 'capstone-project';
+
+ArayExample = ['text here', 'another text here'...]
+
+  <Feed array={YouArrayHere} />
+
+```
 
 ---
 
@@ -94,3 +106,5 @@ import { ActionButton } from 'capstone-project';
   <ActionButton label='Add Component' />
 
 ```
+
+

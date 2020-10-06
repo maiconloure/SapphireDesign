@@ -17,6 +17,7 @@ import PlanInnerContainer from './components/rafael/PlanCard/InnerContainer'
 import PlanMainContainer from './components/rafael/PlanCard/MainContainer'
 import PlanText from './components/rafael/PlanCard/Text'
 import PlanLine from './components/rafael/PlanCard/Line'
+import Feed from './components/feed'
 
 export {
   Logo,
@@ -37,5 +38,6 @@ export {
   PlanInnerContainer,
   PlanMainContainer,
   PlanText,
-  PlanLine
+  PlanLine,
+  Feed
 }
