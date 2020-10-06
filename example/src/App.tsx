@@ -27,7 +27,6 @@ import {
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
-  const [showCardContent, setShowCardContent] = useState(true)
   const [showCard, setShowCard] = useState(true)
   const [showLeandroModal, setShowLeandroModal] = useState(false)
   // const history = useHistory()
@@ -48,13 +47,13 @@ const App = () => {
 
   return (
     <AppContainer>
-      {showLeandroModal && (
-        <ModalLeandro
-          data={[showLeandroModal, () => setShowLeandroModal(false)]}
-        >
-          <Box contentEditable='true'>Digite algo para começar ;)</Box>
-        </ModalLeandro>
-      )}
+      <ModalLeandro
+        title='Modal do Leandro'
+        fontColor='#0F89FF'
+        closeDataPass={[showLeandroModal, () => setShowLeandroModal(false)]}
+      >
+        <Box contentEditable='true'>Digite algo para começar ;)</Box>
+      </ModalLeandro>
       <SubContainer>
         <Logo image={logo} />
         <Title fontSize='3.8rem'>Sapphire Design</Title>
@@ -90,10 +89,6 @@ const App = () => {
           fontColor='#014D82'
           handleClick={imageClick}
           closeable
-          minimizeDataPass={[
-            showCardContent,
-            () => setShowCardContent(!showCardContent)
-          ]}
           closeDataPass={[showCard, () => setShowCard(false)]}
           backgroundColor='rgba(58, 166, 242, 0.5)'
           borderDetails='none'

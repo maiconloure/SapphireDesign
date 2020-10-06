@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Card from '../card'
 import CloseButton from '../../christopher/closeButton'
+import { AiOutlineClose } from 'react-icons/ai'
 
 interface Props {
   children?: string | React.ReactNode
@@ -18,7 +19,7 @@ interface Props {
   backgroundColor?: string
   borderDetails?: string
 
-  data: [
+  closeDataPass: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
   ]
@@ -36,56 +37,78 @@ const Modal = ({
   topSpacing = '0',
   leftSpacing = '0',
   fontColor = '#869198',
-  data,
+  closeDataPass,
   backgroundColor,
   borderDetails
 }: Props) => {
-  const [, callback] = data
+  const [open, callback] = closeDataPass
 
   return (
-    <Background>
-      <Card
-        title={title}
-        titleSize={titleSize}
-        titleUnderline={titleUnderline}
-        titleUnderlineOffset={titleUnderlineOffset}
-        titleMarginBottom={titleMarginBottom}
-        boxWidth={boxWidth}
-        boxPadding={boxPadding}
-        topSpacing={topSpacing}
-        leftSpacing={leftSpacing}
-        fontColor={fontColor}
-        backgroundColor={backgroundColor}
-        borderDetails={borderDetails}
-      >
-        <ButtonAdjuster>
-          <CloseButton
-            data={[callback]}
-            styles={{
-              position: 'right-out-top',
-              size: 'largest',
-              bgColorPrimary: 'transparent',
-              bgColorSecondary: 'transparent',
-              colorPrimary: fontColor
-            }}
-          />
-        </ButtonAdjuster>
-        {children}
-      </Card>
-    </Background>
+    <Shadow>
+      {open && (
+        <Background>
+          <Card
+            title={title}
+            titleSize={titleSize}
+            titleUnderline={titleUnderline}
+            titleUnderlineOffset={titleUnderlineOffset}
+            titleMarginBottom={titleMarginBottom}
+            boxWidth={boxWidth}
+            boxPadding={boxPadding}
+            topSpacing={topSpacing}
+            leftSpacing={leftSpacing}
+            fontColor={fontColor}
+            backgroundColor={backgroundColor}
+            borderDetails={borderDetails}
+          >
+            <ButtonAdjuster>
+              <CloseButton
+                data={[callback]}
+                styles={{
+                  position: 'right-out-top',
+                  size: 'largest',
+                  bgColorPrimary: 'transparent',
+                  bgColorSecondary: 'transparent',
+                  colorPrimary: fontColor
+                }}
+              >
+                <AiOutlineClose />
+              </CloseButton>
+            </ButtonAdjuster>
+            {children}
+          </Card>
+        </Background>
+      )}
+    </Shadow>
   )
 }
 
 export default Modal
 
+const Shadow = styled.div``
+
 const Background = styled.div`
-  z-index: 3;
+  @keyframes example {
+    from {
+      left: -50%;
+    }
+    to {
+      left: 0vw;
+    }
+  }
+
+  z-index: 999;
   width: 100vw;
   height: 100vh;
   position: fixed;
+  transform: translate(-50%, 5%);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation-name: example;
+  animation-duration: 0.1s;
 
   -webkit-backdrop-filter: grayscale(80%) blur(5px);
   backdrop-filter: grayscale(80%) blur(5px);
