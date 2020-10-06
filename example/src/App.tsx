@@ -22,8 +22,22 @@ import {
   PlanMainContainer,
   PlanInnerContainer,
   PlanText,
-  PlanLine
+  PlanLine,
+  Feed
 } from 'capstone'
+
+const sampleArray = [
+  'Christopher acabou a feature chat.',
+  'Leandro está trabalhando em testes, veja aqui!',
+  'João acabou de seguir seu board!',
+  'Guilherme mandou um aviso importante, veja aqui!',
+  'Christopher desenvolveu um bug!!!',
+  'Christopher acabou a feature chat.',
+  'Leandro está trabalhando em testes, veja aqui!',
+  'João acabou de seguir seu board!',
+  'Guilherme mandou um aviso importante, veja aqui!',
+  'Christopher desenvolveu um bug!!!'
+]
 
 const App = () => {
   const [showModal, setShowModal] = useState(false)
@@ -55,6 +69,7 @@ const App = () => {
         <Box contentEditable='true'>Digite algo para começar ;)</Box>
       </ModalLeandro>
       <SubContainer>
+
         <Logo image={logo} />
         <Title fontSize='3.8rem'>Sapphire Design</Title>
         <Title fontSize='1.6rem' color='#000'>
@@ -76,6 +91,7 @@ const App = () => {
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>
         <ActionButton label='Add Component' />
+        <Feed array={sampleArray} />
       </SubContainer>
 
       <Container drag dragMomentum={false}>

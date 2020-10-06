@@ -16,7 +16,7 @@ interface PasswordInputProps {
 const PasswordInput = ({
   placeholder = ' ',
   font = 'Inter',
-  fontSize = '1rem',
+  fontSize = '2.2rem',
   weight = 500,
   color = '#014D82',
   width = '220px',
