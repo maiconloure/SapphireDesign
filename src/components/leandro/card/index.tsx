@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import CloseButton from '../../christopher/closeButton'
+import { AiOutlineClose } from 'react-icons/ai'
 
 interface Props {
   children?: string | React.ReactNode
@@ -19,11 +20,6 @@ interface Props {
   closeable?: boolean
   backgroundColor?: string
   borderDetails?: string
-
-  minimizeDataPass?: [
-    boolean,
-    React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
-  ]
 
   closeDataPass?: [
     boolean,
@@ -50,13 +46,11 @@ const Card = ({
   fontColor = '#0089ff',
   avatars = [{ image: '', user: '' }],
   handleClick = () => {},
-  minimizeDataPass = [true, () => {}],
   closeDataPass = [true, () => {}],
   closeable = false,
   backgroundColor = 'rgba(30, 30, 30, 0.7)',
   borderDetails = '2px solid #111'
 }: Props) => {
-  const [showContent, minimizeCallback] = minimizeDataPass
   const [showCard, closeCallback] = closeDataPass
 
   return (
@@ -74,36 +68,20 @@ const Card = ({
         >
           <div>
             {closeable && (
-              <div>
-                <MinimizeButtonAdjuster>
-                  <CloseButton
-                    data={[minimizeCallback]}
-                    styles={{
-                      position: 'right-out-top',
-                      size: 'largest',
-                      bgColorPrimary: 'transparent',
-                      bgColorSecondary: 'transparent',
-                      colorPrimary: fontColor
-                    }}
-                  >
-                    _
-                  </CloseButton>
-                </MinimizeButtonAdjuster>
-                <CloseButtonAdjuster>
-                  <CloseButton
-                    data={[closeCallback]}
-                    styles={{
-                      position: 'right-out-top',
-                      size: 'largest',
-                      bgColorPrimary: 'transparent',
-                      bgColorSecondary: 'transparent',
-                      colorPrimary: fontColor
-                    }}
-                  >
-                    x
-                  </CloseButton>
-                </CloseButtonAdjuster>
-              </div>
+              <CloseButtonAdjuster>
+                <CloseButton
+                  data={[closeCallback]}
+                  styles={{
+                    position: 'right-out-top',
+                    size: 'largest',
+                    bgColorPrimary: 'transparent',
+                    bgColorSecondary: 'transparent',
+                    colorPrimary: fontColor
+                  }}
+                >
+                  <AiOutlineClose />
+                </CloseButton>
+              </CloseButtonAdjuster>
             )}
           </div>
           <TitleContainer style={{ marginBottom: titleMarginBottom }}>
@@ -118,24 +96,22 @@ const Card = ({
               {title}
             </Title>
           </TitleContainer>
-          {showContent && (
-            <Content>
-              <AvatarsContainer>
-                {avatars &&
-                  avatars.map(({ image, user }: ImageProps, key: number) => {
-                    return (
-                      <Image
-                        key={key}
-                        src={image}
-                        title={user}
-                        onClick={() => handleClick(user)}
-                      />
-                    )
-                  })}
-              </AvatarsContainer>
-              <ChildrenContainer>{children}</ChildrenContainer>
-            </Content>
-          )}
+          <Content>
+            <AvatarsContainer>
+              {avatars &&
+                avatars.map(({ image, user }: ImageProps, key: number) => {
+                  return (
+                    <Image
+                      key={key}
+                      src={image}
+                      title={user}
+                      onClick={() => handleClick(user)}
+                    />
+                  )
+                })}
+            </AvatarsContainer>
+            <ChildrenContainer>{children}</ChildrenContainer>
+          </Content>
         </Box>
       )}
     </div>
@@ -194,15 +170,9 @@ const Image = styled.img`
   }
 `
 
-const MinimizeButtonAdjuster = styled.div`
-  position: absolute;
-  top: 9px;
-  right: 46px;
-`
-
 const CloseButtonAdjuster = styled.div`
   position: absolute;
-  top: 18px;
+  top: 24px;
   right: 16px;
 `
 

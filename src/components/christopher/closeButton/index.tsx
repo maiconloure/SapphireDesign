@@ -1,8 +1,9 @@
 import * as React from 'react'
+import { IconType } from 'react-icons/lib'
 import styled from 'styled-components'
 
 interface Props {
-  children?: string | number
+  children?: string | number | IconType | React.ReactNode
 
   styles?: {
     colorPrimary?: string
