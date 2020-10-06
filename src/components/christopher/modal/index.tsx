@@ -52,32 +52,18 @@ const Modal = ({ styles, title, children, data }: Props) => {
   const newStyles = { ...StyleDefaultState, ...styles }
 
   return (
-    <Shadow showModal={boolean}>
-      <StyledModal styles={newStyles} showModal={boolean}>
-        <CloseButton
-          data={[callback]}
-          styles={{ position: 'right-out-top', size: newStyles.fontSize }}
-        />
-        <Title styles={newStyles}>{title}</Title>
-        <Container styles={newStyles}>{children}</Container>
-      </StyledModal>
-    </Shadow>
+    <StyledModal styles={newStyles} showModal={boolean}>
+      <CloseButton
+        data={[callback]}
+        styles={{ position: 'right-out-top', size: newStyles.fontSize }}
+      />
+      <Title styles={newStyles}>{title}</Title>
+      <Container styles={newStyles}>{children}</Container>
+    </StyledModal>
   )
 }
 
 export default Modal
-
-const Shadow = styled.div<{ showModal: boolean }>`
-  ${(props) =>
-    props.showModal &&
-    `
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background: #0009;
-    transition: 0.3s;
-  `}
-`
 
 const StyledModal = styled.div<{ styles?: any; showModal: boolean }>`
   background-color: ${(props) => props.styles.bgColorPrimary};
