@@ -4,6 +4,9 @@ import styled from 'styled-components'
 interface FeedProps {
   array: any
   font?: string
+  title?: string
+  titleSize?: string
+  titleWeight?: number
   fontSize?: string
   weight?: number
   color?: string
@@ -11,16 +14,29 @@ interface FeedProps {
   height?: string
 }
 
-const Feed = ({ array }: FeedProps) => {
+const Feed = ({
+  array,
+  font = 'Roboto',
+  title = 'Inter',
+  titleSize = '1.4rem',
+  titleWeight = 700,
+  fontSize = '1rem',
+  weight = 500,
+  color = '#014D82',
+  width = '280px',
+  height = '450px'
+}: FeedProps) => {
   return (
-    <FeedContainer>
-      <FeedTitle>
+    <FeedContainer width={width} height={height}>
+      <FeedTitle font={title} titleSize={titleSize} titleWeight={titleWeight}>
         <h2>Notificações recentes</h2>
       </FeedTitle>
       <InnerBox>
         {array.map((item: any, index: any) => (
           <NewUpdate key={index}>
-            <Text>{item}</Text>
+            <Text font={font} fontSize={fontSize} color={color} weight={weight}>
+              {item}
+            </Text>
           </NewUpdate>
         ))}
       </InnerBox>
@@ -30,15 +46,22 @@ const Feed = ({ array }: FeedProps) => {
 
 export default Feed
 
-const FeedContainer = styled.div`
-  width: 280px;
-  height: 450px;
+const FeedContainer = styled.div<{
+  width: string
+  height: string
+}>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   background: #3aa6f2;
   border-radius: 4px;
   padding: 10px;
 `
 
-const FeedTitle = styled.div`
+const FeedTitle = styled.div<{
+  font: string
+  titleSize: string
+  titleWeight: number
+}>`
   background: #fff;
   border-radius: 4px;
   height: 30px;
@@ -47,7 +70,9 @@ const FeedTitle = styled.div`
   align-items: center;
 
   h2 {
-    font: 600 1.1rem Inter;
+    font-family: ${(props) => props.font};
+    font-weight: ${(props) => props.titleWeight};
+    font-size: ${(props) => props.titleSize};
     color: #014d82;
     margin: 0;
     margin-left: 6px;
@@ -101,8 +126,15 @@ const NewUpdate = styled.div`
   padding: 10px;
 `
 
-const Text = styled.p`
-  font: 500 1rem Roboto;
-  color: #014d82;
+const Text = styled.p<{
+  font: string
+  fontSize: string
+  weight: number
+  color: string
+}>`
+  font-family: ${(props) => props.font}, Helvetica, sans-serif;
+  font-weight: ${(props) => props.weight};
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
   margin: 0;
 `

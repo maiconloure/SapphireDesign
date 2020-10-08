@@ -22,7 +22,7 @@ interface Props {
 }
 
 const StyleDefaultState = {
-  colorPrimary: '#ffc200',
+  colorPrimary: 'transparent',
   colorSecondary: '#ffc200',
   colorComplementary: '#ffc200',
   bgColorPrimary: '#00437d',
@@ -48,15 +48,20 @@ const CloseButton = ({ children = 'X', styles, data }: Props) => {
 
 export default CloseButton
 
-const XButton = styled.button<{ styles?: any }>`
-  background-color: ${(props) => props.styles.bgColorPrimary};
+const XButton = styled.div<{ styles?: any }>`
   color: ${(props) => props.styles.colorPrimary};
-  border: 1px solid ${(props) => props.styles.bgColorSecondary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   text-align: center;
   position: absolute;
   cursor: pointer;
   outline: none;
+
+  img {
+    width: 35px;
+  }
 
   ${(props) =>
     props.styles.position === 'left'
