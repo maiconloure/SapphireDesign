@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker-face.jpg'
 import napoleon from './images/napoleon-dynamite.jpg'
+import closeIcon from './assets/close-window.png'
+
 import { motion } from 'framer-motion'
 import {
   Logo,
@@ -117,6 +119,7 @@ const App = () => {
         title='Login'
         data={[showModal, setShowModal]}
         styles={{ size: 'medium', fontSize: 'large' }}
+        icon={closeIcon}
       >
         <div
           style={{
@@ -131,6 +134,7 @@ const App = () => {
           <Button onClick={handleOnClick}>Login</Button>
         </div>
       </Modal>
+      
       <Test>
         <CloseButton
           styles={{
@@ -139,9 +143,10 @@ const App = () => {
           }}
           data={[setShowModal]}
         >
-          -
+        <img src={closeIcon} alt="close icon" />
         </CloseButton>
       </Test>
+
       <PlanCard
         cardMargin={5}
         cardPadding={10}

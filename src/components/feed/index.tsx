@@ -18,9 +18,9 @@ const Feed = ({
   array,
   font = 'Roboto',
   title = 'Inter',
-  titleSize = '2rem',
+  titleSize = '1.4rem',
   titleWeight = 700,
-  fontSize = '1.4rem',
+  fontSize = '1rem',
   weight = 500,
   color = '#014D82',
   width = '280px',
@@ -71,8 +71,8 @@ const FeedTitle = styled.div<{
 
   h2 {
     font-family: ${(props) => props.font};
-    font-weight: ${(props) => props.weight};
-    font-size: ${(props) => props.fontSize};
+    font-weight: ${(props) => props.titleWeight};
+    font-size: ${(props) => props.titleSize};
     color: #014d82;
     margin: 0;
     margin-left: 6px;

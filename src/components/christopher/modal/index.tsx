@@ -32,6 +32,7 @@ interface Props {
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
   ]
+  icon?: any
 }
 
 const StyleDefaultState = {
@@ -47,7 +48,7 @@ const StyleDefaultState = {
   size: ''
 }
 
-const Modal = ({ styles, title, children, data }: Props) => {
+const Modal = ({ styles, title, children, data, icon }: Props) => {
   const [boolean, callback] = data
   const newStyles = { ...StyleDefaultState, ...styles }
 
@@ -55,8 +56,10 @@ const Modal = ({ styles, title, children, data }: Props) => {
     <StyledModal styles={newStyles} showModal={boolean}>
       <CloseButton
         data={[callback]}
-        styles={{ position: 'right-out-top', size: newStyles.fontSize }}
-      />
+        styles={{ position: 'right', size: newStyles.fontSize }}
+      >
+        <img src={icon} alt='close icon' />
+      </CloseButton>
       <Title styles={newStyles}>{title}</Title>
       <Container styles={newStyles}>{children}</Container>
     </StyledModal>
@@ -73,10 +76,8 @@ const StyledModal = styled.div<{ styles?: any; showModal: boolean }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   display: content-box;
-
-  border-radius: 10px;
+  border-radius: 6px;
   outline: none;
   border: none;
   padding: 3px;
@@ -188,7 +189,7 @@ const ScrollBar = styled.div`
 
 const Container = styled(ScrollBar)<{ styles?: any }>`
   overflow: auto;
-  padding: 50px;
+  padding: 15px;
   display: content-box;
 
   max-height: ${(props) => props.styles.maxHeight}vh;
