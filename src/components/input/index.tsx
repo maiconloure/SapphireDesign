@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 interface InputProps {
   type: string
+  name?: string
   placeholder?: string
   font?: string
   fontSize?: string
@@ -15,6 +16,7 @@ interface InputProps {
 
 const Input = ({
   type,
+  name = 'fname',
   placeholder = '',
   font = 'Inter',
   fontSize = '2.2rem',
@@ -28,6 +30,7 @@ const Input = ({
     <BasicInput>
       <Inpt
         type={type}
+        name={name}
         placeholder={placeholder}
         font={font}
         fontSize={fontSize}
@@ -70,10 +73,10 @@ const Inpt = styled.input<{
   }
 
   &:hover {
-    box-shadow: 1px 1px 10px 8px rgba(29, 37, 112, 0.15);
+    box-shadow: 1px 1px 0px 8px rgba(2, 19, 60, 0.2);
   }
 
   &:active {
-    box-shadow: none;
+    box-shadow: 1px 1px 6px 8px rgba(2, 19, 60, 0.3);
   }
 `
