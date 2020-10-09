@@ -73,10 +73,10 @@ const Inpt = styled.input<{
   }
 
   &:hover {
-    box-shadow: 1px 1px 0px 8px rgba(2, 19, 60, 0.2);
+    box-shadow: 0 0 1px 5px rgba(255, 255, 255, 0.3);
   }
 
   &:active {
-    box-shadow: 1px 1px 6px 8px rgba(2, 19, 60, 0.3);
+    box-shadow: 0 0 2px 5px rgba(255, 255, 255, 0.3);
   }
 `
