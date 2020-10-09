@@ -130,6 +130,7 @@ const App = () => {
           }}
         >
           <Input type='text' placeholder='Your Email' />
+          <div></div>
           <Input type='password' placeholder='Your Password' />
           <Button onClick={handleOnClick}>Login</Button>
         </div>

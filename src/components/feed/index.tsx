@@ -12,6 +12,7 @@ interface FeedProps {
   color?: string
   width?: string
   height?: string
+  minHeight?: string
 }
 
 const Feed = ({
@@ -24,11 +25,12 @@ const Feed = ({
   weight = 500,
   color = '#014D82',
   width = '280px',
-  height = '450px'
+  height = '450px',
+  minHeight = '30px'
 }: FeedProps) => {
   const [minimize, setMinimize] = useState(false)
   return (
-    <FeedContainer width={width} height={minimize ? '30px' : height}>
+    <FeedContainer width={width} height={minimize ? minHeight : height}>
       <TopContainer>
         <FeedTitle font={title} titleSize={titleSize} titleWeight={titleWeight}>
           <h2>Notificações recentes</h2>
