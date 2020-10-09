@@ -38,7 +38,7 @@ const Input = ({
         width={width}
         height={height}
         weight={weight}
-        onChange={(e) => onTextChange(e.currentTarget.value)}
+        onChange={(value: any) => onTextChange(value)}
       />
     </BasicInput>
   )
@@ -73,10 +73,10 @@ const Inpt = styled.input<{
   }
 
   &:hover {
-    box-shadow: 0 0 1px 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 1px 5px rgba(25, 25, 112, 0.2);
   }
 
   &:active {
-    box-shadow: 0 0 2px 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 2px 5px rgba(25, 25, 112, 0.2);
   }
 `
