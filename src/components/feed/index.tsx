@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 interface FeedProps {
@@ -18,7 +18,7 @@ const Feed = ({
   array,
   font = 'Roboto',
   title = 'Inter',
-  titleSize = '1.4rem',
+  titleSize = '1.2rem',
   titleWeight = 700,
   fontSize = '1rem',
   weight = 500,
@@ -26,20 +26,33 @@ const Feed = ({
   width = '280px',
   height = '450px'
 }: FeedProps) => {
+  const [minimize, setMinimize] = useState(false)
   return (
-    <FeedContainer width={width} height={height}>
-      <FeedTitle font={title} titleSize={titleSize} titleWeight={titleWeight}>
-        <h2>Notificações recentes</h2>
-      </FeedTitle>
-      <InnerBox>
-        {array.map((item: any, index: any) => (
-          <NewUpdate key={index}>
-            <Text font={font} fontSize={fontSize} color={color} weight={weight}>
-              {item}
-            </Text>
-          </NewUpdate>
-        ))}
-      </InnerBox>
+    <FeedContainer width={width} height={minimize ? '30px' : height}>
+      <TopContainer>
+        <FeedTitle font={title} titleSize={titleSize} titleWeight={titleWeight}>
+          <h2>Notificações recentes</h2>
+        </FeedTitle>
+        <Minimize onClick={() => setMinimize(!minimize)}> - </Minimize>
+      </TopContainer>
+      {minimize ? (
+        <div />
+      ) : (
+        <InnerBox>
+          {array.map((item: any, index: any) => (
+            <NewUpdate key={index}>
+              <Text
+                font={font}
+                fontSize={fontSize}
+                color={color}
+                weight={weight}
+              >
+                {item}
+              </Text>
+            </NewUpdate>
+          ))}
+        </InnerBox>
+      )}
     </FeedContainer>
   )
 }
@@ -56,7 +69,10 @@ const FeedContainer = styled.div<{
   border-radius: 4px;
   padding: 10px;
 `
-
+const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 const FeedTitle = styled.div<{
   font: string
   titleSize: string
@@ -68,6 +84,7 @@ const FeedTitle = styled.div<{
   margin-bottom: 12px;
   display: flex;
   align-items: center;
+  width: 87%;
 
   h2 {
     font-family: ${(props) => props.font};
@@ -76,6 +93,23 @@ const FeedTitle = styled.div<{
     color: #014d82;
     margin: 0;
     margin-left: 6px;
+  }
+`
+
+const Minimize = styled.div`
+  width: 11%;
+  background: #fff;
+  border-radius: 4px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 2rem Inter;
+
+  &:active {
+    box-shadow: 0 0 0 5px rgba(2, 19, 60, 0.3);
+    transform: scale(0.9);
   }
 `
 const ScrollBar = styled.div`
