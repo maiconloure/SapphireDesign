@@ -9,7 +9,7 @@ interface ButtonProps {
   color?: string
   width?: string
   height?: string
-  onClick?: () => void
+  onClick?: any
 }
 
 const Button = ({
