@@ -11,7 +11,7 @@ interface ButtonProps {
   width?: string
   height?: string
   radius?: string
-  onClick?: any
+  onClick?: () => void
 }
 
 const Button = ({

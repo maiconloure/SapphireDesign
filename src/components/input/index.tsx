@@ -11,7 +11,7 @@ interface InputProps {
   color?: string
   width?: string
   height?: string
-  onTextChange?: (text: string) => void
+  onTextChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = ({
@@ -38,7 +38,9 @@ const Input = ({
         width={width}
         height={height}
         weight={weight}
-        onChange={(value: any) => onTextChange(value)}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          onTextChange(event)
+        }
       />
     </BasicInput>
   )

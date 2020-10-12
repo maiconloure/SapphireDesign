@@ -20,7 +20,6 @@ interface Props {
   closeable?: boolean
   backgroundColor?: string
   borderDetails?: string
-
   closeDataPass?: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)

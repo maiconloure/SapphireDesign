@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
 import joker from './images/joker-face.jpg'
@@ -57,8 +57,8 @@ const App = () => {
     setShowLeandroModal(!showLeandroModal)
   }
 
-  const handleForm = (evt: any) => {
-    console.log(evt)
+  const handleForm = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event)
   }
 
   return (

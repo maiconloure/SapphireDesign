@@ -11,7 +11,7 @@ interface PasswordInputProps {
   color?: string
   width?: string
   height?: string
-  onTextChange: (text: string) => void
+  onTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const PasswordInput = ({
@@ -23,7 +23,7 @@ const PasswordInput = ({
   color = '#014D82',
   width = '220px',
   height = '30px',
-  onTextChange
+  onTextChange = () => {}
 }: PasswordInputProps) => {
   const [type, setType] = React.useState('password')
   return (
@@ -38,7 +38,9 @@ const PasswordInput = ({
         color={color}
         width={width}
         height={height}
-        onChange={(value: any) => onTextChange(value)}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          onTextChange(event)
+        }
       />
       {type === 'password' ? (
         <CloseEye

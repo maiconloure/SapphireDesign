@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 interface FeedProps {
-  array: any
+  array: string[]
   font?: string
   title?: string
   titleSize?: string
