@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 interface InputProps {
   type: string
+  value?: string
   name?: string
   placeholder?: string
   font?: string
@@ -16,6 +17,7 @@ interface InputProps {
 
 const Input = ({
   type,
+  value = '',
   name = 'fname',
   placeholder = '',
   font = 'Inter',
@@ -31,6 +33,7 @@ const Input = ({
       <Inpt
         type={type}
         name={name}
+        value={value}
         placeholder={placeholder}
         font={font}
         fontSize={fontSize}

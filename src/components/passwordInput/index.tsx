@@ -11,12 +11,14 @@ interface PasswordInputProps {
   color?: string
   width?: string
   height?: string
+  value?: string
   onTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const PasswordInput = ({
   name = 'password',
   placeholder = ' ',
+  value = '',
   font = 'Inter',
   fontSize = '2.2rem',
   weight = 500,
@@ -31,6 +33,7 @@ const PasswordInput = ({
       <Inpt
         type={type}
         name={name}
+        value={value}
         placeholder={placeholder}
         font={font}
         fontSize={fontSize}
