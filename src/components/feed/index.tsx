@@ -32,14 +32,14 @@ const Feed = ({
 }: FeedProps) => {
   const [minimizeFeed, setMinimizeFeed] = useState(minimize)
   return (
-    <FeedContainer width={width} height={minimize ? minHeight : height}>
+    <FeedContainer width={width} height={minimizeFeed ? minHeight : height}>
       <TopContainer>
         <FeedTitle font={title} titleSize={titleSize} titleWeight={titleWeight}>
           <h2>Notificações recentes</h2>
         </FeedTitle>
         <Minimize onClick={() => setMinimizeFeed(!minimizeFeed)}> - </Minimize>
       </TopContainer>
-      {minimize ? (
+      {minimizeFeed ? (
         <div />
       ) : (
         <InnerBox>

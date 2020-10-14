@@ -93,7 +93,7 @@ const App = () => {
         <Button onClick={handleOnClick}>Login</Button>
         <DarkButton onClick={handleOnClick}>Register</DarkButton>
         <ActionButton label='Add Component' />
-        <Feed array={sampleArray} />
+        <Feed minimize  array={sampleArray} />
       </SubContainer>
 
       <Container drag dragMomentum={false}>
