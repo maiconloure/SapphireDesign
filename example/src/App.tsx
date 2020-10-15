@@ -1,9 +1,8 @@
 import React, { useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import logo from './assets/thumb.jpg'
-import joker from './images/joker-face.jpg'
-import napoleon from './images/napoleon-dynamite.jpg'
 import closeIcon from './assets/close-window.png'
+import userIcon from './assets/user1.png'
 
 import { motion } from 'framer-motion'
 import {
@@ -101,8 +100,7 @@ const App = () => {
           title='Product Backlog'
           boxWidth='32vw'
           avatars={[
-            { image: joker, user: 'Joker' },
-            { image: napoleon, user: 'Napoleon Dynamite' }
+            { image: userIcon, user: 'user' },
           ]}
           fontColor='#014D82'
           handleClick={imageClick}
@@ -110,6 +108,7 @@ const App = () => {
           closeDataPass={[showCard, () => setShowCard(false)]}
           backgroundColor='rgba(58, 166, 242, 0.5)'
           borderDetails='none'
+          avatarWidth="100px"
         >
           <Box contentEditable='true'>Digite algo para começar ;)</Box>
         </CardLeandro>

@@ -20,6 +20,7 @@ interface Props {
   closeable?: boolean
   backgroundColor?: string
   borderDetails?: string
+  avatarWidth?: string
   closeDataPass?: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
@@ -48,7 +49,7 @@ const Card = ({
   closeDataPass = [true, () => {}],
   closeable = false,
   backgroundColor = 'rgba(30, 30, 30, 0.7)',
-  borderDetails = '2px solid #111'
+  avatarWidth = '50px'
 }: Props) => {
   const [showCard, closeCallback] = closeDataPass
 
@@ -61,7 +62,6 @@ const Card = ({
             marginTop: topSpacing,
             marginLeft: leftSpacing,
             background: backgroundColor,
-            border: borderDetails,
             padding: boxPadding
           }}
         >
@@ -104,6 +104,7 @@ const Card = ({
                       key={key}
                       src={image}
                       title={user}
+                      width={avatarWidth}
                       onClick={() => handleClick(user)}
                     />
                   )
@@ -140,8 +141,9 @@ const TitleContainer = styled.div`
 `
 
 const Title = styled.h1`
-  font-family: 'Inter', Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: 'Inter';
+  color: #014d82;
+  font-weight: 700;
   width: fit-content;
 `
 
@@ -151,8 +153,9 @@ const Content = styled.div`
   align-items: center;
 `
 
-const Image = styled.img`
-  width: 3rem;
+const Image = styled.img<{ width?: any }>`
+  width: ${({ width }) => width || '50px'};
+
   border-radius: 900px;
   margin: 1px;
 
