@@ -21,6 +21,8 @@ interface Props {
   backgroundColor?: string
   borderDetails?: string
   avatarWidth?: string
+  clickOnBox?: any
+  titleOnChange?: any
   closeDataPass?: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>> | ((props: boolean) => void)
@@ -49,7 +51,9 @@ const Card = ({
   closeDataPass = [true, () => {}],
   closeable = false,
   backgroundColor = 'rgba(30, 30, 30, 0.7)',
-  avatarWidth = '50px'
+  avatarWidth = '50px',
+  clickOnBox = () => {},
+  titleOnChange = () => {}
 }: Props) => {
   const [showCard, closeCallback] = closeDataPass
 
@@ -57,6 +61,7 @@ const Card = ({
     <div>
       {showCard && (
         <Box
+          onClick={clickOnBox}
           style={{
             width: boxWidth,
             marginTop: topSpacing,
@@ -85,15 +90,15 @@ const Card = ({
           </div>
           <TitleContainer style={{ marginBottom: titleMarginBottom }}>
             <Title
+              value={title}
+              onChange={titleOnChange}
               style={{
                 fontSize: titleSize,
                 color: fontColor,
                 paddingBottom: titleUnderlineOffset,
                 borderBottom: titleUnderline
               }}
-            >
-              {title}
-            </Title>
+            />
           </TitleContainer>
           <Content>
             <AvatarsContainer>
@@ -136,11 +141,14 @@ const TitleContainer = styled.div`
   width: 100%;
 `
 
-const Title = styled.h1`
+const Title = styled.input`
   font-family: 'Inter';
+  outline: none;
+  background: transparent;
   color: #014d82;
   font-weight: 700;
   width: fit-content;
+  border: none;
 `
 
 const Content = styled.div`

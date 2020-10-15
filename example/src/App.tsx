@@ -45,6 +45,10 @@ const App = () => {
   const [showCard, setShowCard] = useState(true)
   const [showLeandroModal, setShowLeandroModal] = useState(false)
   // const history = useHistory()
+const [title, setTitle] = useState('sem titulo')
+  const handleTitle = (evt: any) => {
+    setTitle(evt.currentTarget.value)
+  }
 
   const handleOnClick = () => {
     console.log('FUNCIONOU')
@@ -97,7 +101,7 @@ const App = () => {
 
       <Container drag dragMomentum={false}>
         <CardLeandro
-          title='Product Backlog'
+          title={title}
           boxWidth='32vw'
           avatars={[
             { image: userIcon, user: 'user' },
@@ -109,6 +113,7 @@ const App = () => {
           backgroundColor='rgba(58, 166, 242, 0.5)'
           borderDetails='none'
           avatarWidth="100px"
+          titleOnChange={handleTitle}
         >
           <Box contentEditable='true'>Digite algo para começar ;)</Box>
         </CardLeandro>
