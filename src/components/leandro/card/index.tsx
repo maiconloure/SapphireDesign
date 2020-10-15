@@ -187,8 +187,8 @@ const AvatarsContainer = styled.div`
 
 const ChildrenContainer = styled.div`
   padding: 0;
-  margin-top: 28px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
   display: flex;
 `
