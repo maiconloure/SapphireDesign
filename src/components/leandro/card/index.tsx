@@ -121,10 +121,6 @@ const Card = ({
 export default Card
 
 const Box = styled.div`
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  background: rgba(30, 30, 30, 0.7);
-
   position: relative;
   display: flex;
   flex-flow: column;
